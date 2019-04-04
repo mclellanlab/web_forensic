@@ -16,7 +16,7 @@ removeCharacter="_L001"						# Any character you want to delete between the Samp
 R1="_R1"							# How are written the R1 character in the filename: _R1? _R1_?
 R2="_R2"							# How are written the R2 character in the filename: _R2? _R2_?
 
-threads=2										# Number of threads to use
+threads=2							# Number of threads to use
 ##############################################################################################################
 
 
