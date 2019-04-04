@@ -8,11 +8,13 @@ pear --version					# https://sco.h-its.org/exelixis/web/software/pear/
 #####Parameters that can/have to be changed by the user #######################################################
 
 # General parameters
-workingPATH="/path/to/the/parent/directory/"  	# Path to the parent directory. It is not the directory where are stored the fastqs.
+workingPATH="/Users/adelaideroguet/Desktop/test_AnimalPlate/"  	# Path to the parent directory. It is not the directory where are stored the fastqs. Should finish by "/"
 fastq_directory="fastq_directory"				# Name of the folder containing the fastqs. It must be located in the parent directory.
 output_file="output_file.fa"					# Name of the output fasta
-region="V4V5"									# 16S rRNA gene region targeted V4V5 or V6
-removeCharacter="_L001"							# Any character you want to delete between the Sample ID and the R1/R2 characters. Example: SampleID_L001_R1_blablabla.fastq.gz
+region="V4V5"							# 16S rRNA gene region targeted V4V5 or V6
+removeCharacter="_L001"						# Any character you want to delete between the Sample ID and the R1/R2 characters. Example: SampleID_L001_R1_blablabla.fastq.gz
+R1="_R1"							# How are written the R1 character in the filename: _R1? _R1_?
+R2="_R2"							# How are written the R2 character in the filename: _R2? _R2_?
 
 threads=2										# Number of threads to use
 ##############################################################################################################
@@ -58,8 +60,8 @@ fi
 
 	# Cutadapt processing
 LOG_FILE_CUTADAPT="../Cutadapt/log_cutadapt.log"
-for fileR1 in *_R1*; do
-    fileR2=${fileR1/R1/R2}; printf "Trimming of ${fileR1} and ${fileR2} " 1>&3
+for fileR1 in *$R1*; do
+    fileR2=${fileR1/$R1/$R2}; printf "Trimming of ${fileR1} and ${fileR2} " 1>&3
 	cutadapt -e $errorrate -m 50 -g "$primerF" -G "$primerR" -o "../Cutadapt/$fileR1" -p "../Cutadapt/$fileR2" $fileR1 $fileR2; printf "done\n" 1>&3
 done 3>&1 1>>${LOG_FILE_CUTADAPT} 2>&1
 printf "\n\n"
@@ -95,9 +97,9 @@ qualitytrimming=0								# Quality score threshold for trimming the low quality 
 basesN=0										# Maximal proportion of uncalled bases in a read. Setting this value to 0 will discard all reads containing uncalled bases (N). The other extreme setting is 1 which causes PEAR to process all reads independent on the number of uncalled bases. (default: 1)
 LOG_FILE_PEAR="../log_PEAR.log"
 
-for fileR1 in *_R1*; do
-    fileR2=${fileR1/R1/R2}
-    file_o=${fileR1/_R1*.fastq/}; printf "Merging ${fileR1} and ${fileR2} " 1>&3
+for fileR1 in *$R1*; do
+    fileR2=${fileR1/$R1/$R2}
+    file_o=${fileR1/$R1*.fastq/}; printf "Merging ${fileR1} and ${fileR2} " 1>&3
     pear -n $minlength -m $maxlength -q $qualitytrimming -u $basesN -j $threads -f $fileR1 -r $fileR2 -o  "../${file_o}"; printf "done\n" 1>&3
 done 3>&1 1>>${LOG_FILE_PEAR} 2>&1
 
