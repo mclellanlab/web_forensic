@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Microbial Source Tracker</title>
+    <meta http-equiv="Refresh" content="10">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style type="text/css">
+        .center-message {
+            position: absolute;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+        }
+    </style>
+</head>
+<body>
+        <div class="center-message">
+            Processing FASTA file
+            <br />
+            <br />
+            Task submitted {{ started_message }}
+            <br />
+            <br />
+            <div class="progress progress-striped active" style="margin-bottom:0;">
+                <div class="progress-bar" style="width: 100%"></div>
+            </div>
+            <br />
+
+            We will send e-mail notification to <b>{{ email }}</b> when task is completed. Also you can save URL of this page and visit later to check status.
+
+        </div>
+</body>
+</html>

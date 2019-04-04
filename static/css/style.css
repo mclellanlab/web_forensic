@@ -1,0 +1,29 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+.footer {
+    padding-top: 30px;
+    position: absolute;
+    text-align: center;
+    font-size: 10px;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+}
+
+.li-dot {
+    background-color: #9dd4d3;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    text-align: center;
+    float: left;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Microbial Source Tracker</title>
+        <meta name="google" value="notranslate">
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/lightbox.css') }}">
+        <script src="{{ url_for('static', filename='js/jquery.form.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static', filename='js/index.js') }}" type="text/javascript"></script>
+        <script src="{{ url_for('static', filename='js/lightbox.js') }}" type="text/javascript"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <!-- <img src="{{ url_for('static', filename='img/animals.png') }}" width="240" height="240" style="float: right; display: inline-block;"> -->
+                <h3>FORENSIC</h3>
+                <h4>FORest ENteric Source IdentifiCation</h4>
+                <p class="lead"></p>
+                <div class="row" style="">
+                    <div class="col-md-6">
+                        <div class="text-center">
+                            <form action="/newtask" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="file">Fasta file: </label>
+                                    <input type="file" name="file" id="file" />
+                                    <!-- <label for="exampleInputEmail1">Email address</label>
+                                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">E-mail: </label>
+                                    <input type="input" name="email" id="email" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="region">Region: </label>
+                                    <select name="region" id="region">
+                                        <option value="V4V5">V4V5</option>
+                                        <option value="V6">V6</option>
+                                    </select>
+                                </div>
+                                <a class="btn btn-primary btn-md" href="#" role="button" onclick="$('form').submit();"><span class="glyphicon glyphicon-upload"></span> Submit new task</a>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="input-group" style="max-width: 360px">
+                            <input type="number" id="task_id" class="form-control" placeholder="Task Id">
+                            <span class="input-group-btn">
+                                <a class="btn btn-primary btn-md" href="#" id="view_results" role="button"><span class="glyphicon glyphicon-folder-open"></span> View results</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>How it works</h4>
+                    <p style="text-align: justify">
+                        To identify fecal pollution sources, a classifier was first designed for each source using random forest classification. <br />
+                        <br />
+                        <div style="clear: both;"></div>
+                        <span class="li-dot"> a </span>
+                        <p style="padding-left: 25px;">A classifier is composed of host-specific and host-preferred sequences that are the most reliable to discriminate between sources. Classifiers were then trained with the sequences previously selected.</p>
+                         <span class="li-dot"> b </span>
+                         <p style="padding-left: 25px;">To classify an unknown sample, the sequences identical to the ones composing the classifiers are retained, and their relative abundance is calculated.</p>
+                         <span class="li-dot"> c </span>
+                         <p style="padding-left: 25px;">An unknown sample is considered to be contaminated by a source if the majority of these abundances are similar to the relative abundances of the sequences in the classifiers.</p>
+
+                        <a href="{{ url_for('static', filename='img/figure01_big.png') }}" data-lightbox="image1"><img src="{{ url_for('static', filename='img/figure01_small.png') }}"/></a>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Data Format</h4>
+                    <p style="text-align: justify">
+                        FORENSIC supports only fasta files. 
+                        An example, representing the V6 artificial community in Roguet et al. paper, is downloadable <a href="{{ url_for('static', filename='data/test_v6.fa.7z') }}">here</a>.<br>
+                        <br>
+                        Amplicon library must be generated by amplification of the V4–V5 or V6 hypervariable regions of the 16S rRNA gene using Illumina® platform. Primers used, and PCR conditions are described <a href="https://figshare.com/articles/16S_amplicon_fusion_primers_and_protocol_for_Illumina_platform_sequencing/833944">here</a>. Reads must be trimmed using <a href="https://cutadapt.readthedocs.io/en/stable/guide.html">CUTADAPT</a>, and merged using <a href="https://sco.h-its.org/exelixis/web/software/pear/">PEAR</a> according to the V4V5 or V6 <a href="{{ url_for('static', filename='data/TrimMerge.sh') }}">workflows</a>.<br>
+                        <br>
+                        A detailed description of sequences processing, and random forest parameters are available in the paper <a href="https://microbiomejournal.biomedcentral.com/track/pdf/10.1186/s40168-018-0568-3">Roguet et al. 2018</a>.
+                        <br>
+                    </p>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <h4>Citation</h4>
+                    <p style="text-align: justify">
+                        If you use FORENSIC, please consider citing the article below<br />
+                        Roguet A, Esen ÖC, Newton RJ, Eren AM and McLellan SL (accepted). Fecal source identification using random forest. Microbiome [DOI: 10.1186/s40168-018-0568-3]<br />
+                        <br />
+                        Roguet A, Esen ÖC, Newton RJ, Eren AM and McLellan SL (in preparation). FORENSIC, an online fecal source identification toolkit. Peer-Reviewed Journal<br />
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">© 2018 Funded by National Institutes of Health</p>
+            </div>
+        </footer>
+    <div id="modalUploading" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">
+        <div class="modal-dialog modal-m">
+            <div class="modal-content">
+                <div class="modal-header"></div>
+                <div class="modal-body">
+                    <div class="progress progress-striped active" style="margin-bottom:0;">
+                        <div class="progress-bar" style="width: 100%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        lightbox.option({
+          'resizeDuration': 200,
+          'wrapAround': true
+        });
+    </script>
+    </body>
+</html>
