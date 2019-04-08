@@ -250,6 +250,11 @@
                         <div class="panel panel-default">
                           <div class="panel-heading">Visualization</div>
                           <div class="panel-body">
+                            Sample Name: <select id="bubbleplot_sample_name">
+                                {% for sample_name in data.sample_names %}
+                                    <option val="{{sample_name}}">{{sample_name}}</option>
+                                {% endfor %}
+                            </select>
                             <li id="currentDisplay" class="selected" style="display: none;"><a></a></li>
                             <div id="viz_container">
 

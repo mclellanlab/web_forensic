@@ -61,6 +61,7 @@ def show_task_result(task_id):
         data['exists'] = True
         data['task_id'] = str(task_id)
         data['email'] = open(os.path.join(task_path, "email"), 'r').read()
+        data['sample_names'] = open(os.path.join(task_path, "counts_table.txt"), 'r').readline().strip().split('\t')
 
         Clostridiales_path = os.path.join(task_path, "report_Clostridiales_predprob.txt")
         Bacteroidales_path = os.path.join(task_path, "report_Bacteroidales_predprob.txt")
@@ -94,7 +95,6 @@ def return_heatmap_data(target, task_id):
     df = pd.read_csv(pd.compat.StringIO("sample_name\t" + open(heatmap_data).read()), delimiter='\t')
 
     return df.melt(id_vars=['sample_name']).to_json(orient='records')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
