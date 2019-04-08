@@ -17,6 +17,7 @@
     <script src="{{ url_for('static', filename='js/vizuly_core.min.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static', filename='js/vizuly_halo.min.js') }}" type="text/javascript"></script>
     <script src="{{ url_for('static', filename='js/halo_test_AR.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/heatmap.js') }}" type="text/javascript"></script>
     <style>
         body {
           -webkit-print-color-adjust: exact !important;
@@ -236,6 +237,17 @@
                           </div>
                         </div>
                         <div class="panel panel-default">
+                            <div class="panel-heading">Bray-Curtis Analysis</div>
+                            <div class="panel-body">
+                                <center>
+                                    <h4>Bacteroidales</h4>
+                                    <div id='heatmap_Bacteroidales'></div>
+                                    <h4>Clostridiales</h4>
+                                    <div id='heatmap_Clostridiales'></div>
+                                </center>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
                           <div class="panel-heading">Visualization</div>
                           <div class="panel-body">
                             <li id="currentDisplay" class="selected" style="display: none;"><a></a></li>
@@ -310,6 +322,8 @@ $(document).ready(function() {
 
         loadData({{data.task_id}});
 
+        drawHeatmap('Bacteroidales',{{data.task_id}}, '#heatmap_Bacteroidales'); // heatmap.js
+        drawHeatmap('Clostridiales',{{data.task_id}}, '#heatmap_Clostridiales'); // heatmap.js
 
     });
 </script>

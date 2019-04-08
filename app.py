@@ -4,6 +4,7 @@ import time
 import random
 import timeago
 import subprocess
+import pandas as pd
 
 from flask import Flask, render_template, request, jsonify, redirect
 from werkzeug import secure_filename
@@ -81,6 +82,18 @@ def return_bubbleplot_data(task_id):
     bubbleplot = os.path.join(task_path, 'report_bubbleplot', 'Clostridiales_Dog_PU05.csv')
     csv = open(bubbleplot, 'r').read()
     return csv
+
+@app.route('/heatmap_data/<target>/<int:task_id>')
+def return_heatmap_data(target, task_id):
+    if not target in ['Clostridiales', 'Bacteroidales']:
+        raise Exception("Wrong request")
+
+    task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
+    heatmap_data = os.path.join(task_path, 'report_BrayCurtis_'+target+'.txt')
+
+    df = pd.read_csv(pd.compat.StringIO("sample_name\t" + open(heatmap_data).read()), delimiter='\t')
+
+    return df.melt(id_vars=['sample_name']).to_json(orient='records')
 
 
 if __name__ == '__main__':
