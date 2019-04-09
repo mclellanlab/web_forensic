@@ -240,10 +240,7 @@
                             <div class="panel-heading">Bray-Curtis Analysis</div>
                             <div class="panel-body">
                                 <center>
-                                    <h4>Bacteroidales</h4>
-                                    <div id='heatmap_Bacteroidales'></div>
-                                    <h4>Clostridiales</h4>
-                                    <div id='heatmap_Clostridiales'></div>
+                                    <div id='heatmap'></div>
                                 </center>
                             </div>
                         </div>
@@ -327,8 +324,7 @@ $(document).ready(function() {
 
         loadData({{data.task_id}});
 
-        drawHeatmap('Bacteroidales',{{data.task_id}}, '#heatmap_Bacteroidales'); // heatmap.js
-        drawHeatmap('Clostridiales',{{data.task_id}}, '#heatmap_Clostridiales'); // heatmap.js
+        drawHeatmap({{data.task_id}}, '#heatmap'); // heatmap.js
 
     });
 </script>
