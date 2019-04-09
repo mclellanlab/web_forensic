@@ -12,7 +12,7 @@ function drawHeatmap(task_id, object_id) {
 
     var colorScale = d3.scale.linear()
       .domain([0, 1])
-      .range(["#FFFFFF", "#9E0142"]);
+      .range(["#9E0142", "#FFFFFF"]);
 
     var svg = d3.select(object_id).append("svg")
       .attr("width", 800)
@@ -45,19 +45,19 @@ function drawHeatmap(task_id, object_id) {
       .style("fill", "url(#linear-gradient)");
 
     legend.append("text")
-      .text("0")
+      .text("0 (Similar)")
       .attr("x", 0)
       .attr("y", 35)
       .attr("fill", "#000000")
-      .style("font-size", "14px")
+      .style("font-size", "12px")
       .style("text-anchor", "middle");
 
     legend.append("text")
-      .text("1")
+      .text("1 (Dissimilar)")
       .attr("x", 160)
       .attr("y", 35)
       .attr("fill", "#000000")
-      .style("font-size", "14px")
+      .style("font-size", "12px")
       .style("text-anchor", "middle");
 
     for (let order=0; order < species.length; order++) {
@@ -101,8 +101,8 @@ function drawHeatmap(task_id, object_id) {
           .enter().append("rect")
           .attr("x", function(d) { return offset + sample_types.indexOf(d.variable) * gridSize; })
           .attr("y", function(d) { return sample_names.indexOf(d.sample_name) * gridSize; })
-          .attr("rx", 4)
-          .attr("ry", 4)
+          .attr("rx", 2)
+          .attr("ry", 2)
           .attr("class", "hour bordered")
           .attr("width", gridSize)
           .attr("height", gridSize)
