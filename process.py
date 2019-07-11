@@ -5,6 +5,7 @@ import sys
 import smtplib
 import argparse
 import subprocess
+import traceback
 from Bio import SeqIO
 
 count_table = {}
@@ -65,7 +66,7 @@ def main(task_path, task_id, region):
         server.close()
     except Exception as e:
         with open(os.path.join(task_path, 'email_failed'), 'w') as f:
-            f.write(str(e))
+            f.write(repr(e))
     #-------------------------
 
     if total_reads == 0:
@@ -74,23 +75,28 @@ def main(task_path, task_id, region):
     with open(region_file, 'w') as f:
         f.write(region)
 
-    rscript = subprocess.Popen(['Rscript', 'R_scripts/1_RandomForest_UserDataset.R', outfile, os.path.join(os.path.dirname(outfile), 'report'), region])
-    sStdout, sStdErr = rscript.communicate()
+    log = ""
+    for script_path in ['R_scripts/1_RandomForest_UserDataset.R', 'R_scripts/2_Estimations_SourcesContribution.R', 'R_scripts/3_BrayCurtis.R']:
+        counts_table = outfile
+        report_file = os.path.join(os.path.dirname(outfile), 'report')
+        command = ['Rscript', script_path, counts_table, report_file, region]
 
-    rscript = subprocess.Popen(['Rscript', 'R_scripts/2_Estimations_SourcesContribution.R', outfile, os.path.join(os.path.dirname(outfile), 'report'), region])
-    sStdout, sStdErr = rscript.communicate()
+        log += "Running command: " + " ".join(map(str, command))
+        try:
+            stdout = subprocess.check_output(['Rscript', script_path, counts_table, report_file, region], stderr=subprocess.STDOUT)
+            log += str(stdout) + "\n"
+        except subprocess.CalledProcessError as e:
+            log += "Return code: " + str(e.returncode) + "\n"
+            log += str(e.output) + "\n"    
 
-    rscript = subprocess.Popen(['Rscript', 'R_scripts/3_BrayCurtis.R', outfile, os.path.join(os.path.dirname(outfile), 'report'), region])
-    sStdout, sStdErr = rscript.communicate()
-
-    if not os.path.exists(os.path.join(os.path.dirname(outfile), 'report_predprob.txt')):
-        raise Exception("Rscript failed")
+    with open(os.path.join(task_path, 'Rscript_logs.txt'), 'w') as logf:
+        logf.write(log)
 
 try:
     main(sys.argv[1], sys.argv[2], sys.argv[3])
 except Exception as e:
     f = open(os.path.join(sys.argv[1], 'exit'), 'w')
-    f.write(str(e))
+    f.write(traceback.format_exc())
     f.close()
 
 
