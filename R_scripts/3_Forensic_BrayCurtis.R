@@ -2,7 +2,6 @@ rm(list=ls(all=FALSE))
 ls()
 
 library(vegan)
-library(beepr)#; beep(sound = 2, expr = NULL)
 
 # function - opposite of %in%
 '%!in%' <- function(x,y)!('%in%'(x,y)) 
