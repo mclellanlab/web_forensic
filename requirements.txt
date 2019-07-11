@@ -2,5 +2,3 @@ biopython==1.70
 timeago
 flask
 pandas
-randomForest
-vegan
