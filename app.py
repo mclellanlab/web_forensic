@@ -44,7 +44,7 @@ def start_new_task():
 def task_status(task_id):
     task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
 
-    if (not os.path.exists(task_path)) or os.path.exists(os.path.join(task_path, "report_predresponse_simple.txt")) or os.path.exists(os.path.join(task_path, "exit")):
+    if (not os.path.exists(task_path)) or os.path.exists(os.path.join(task_path, "done")) or os.path.exists(os.path.join(task_path, "exit")):
         return redirect('/result/' + str(task_id))
     else:
         email = open(os.path.join(task_path, "email"), 'r').read()

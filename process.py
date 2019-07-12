@@ -92,6 +92,9 @@ def main(task_path, task_id, region):
     with open(os.path.join(task_path, 'Rscript_logs.txt'), 'w') as logf:
         logf.write(log)
 
+    with open(os.path.join(task_path, 'done') as donef:
+        donef.write("done")
+
 try:
     main(sys.argv[1], sys.argv[2], sys.argv[3])
 except Exception as e:
