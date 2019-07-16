@@ -6,7 +6,7 @@ import timeago
 import subprocess
 import pandas as pd
 
-from flask import Flask, render_template, request, jsonify, redirect
+from flask import Flask, render_template, request, jsonify, redirect, abort
 from werkzeug import secure_filename
 
 app = Flask(__name__)
@@ -77,12 +77,17 @@ def show_task_result(task_id):
 
     return render_template('report.html', data=data)
 
-@app.route('/bubbleplot_data/<int:task_id>')
-def return_bubbleplot_data(task_id):
+@app.route('/bubbleplot_data/<int:task_id>/<sample>')
+def return_bubbleplot_data(task_id, sample):
     task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
-    bubbleplot = os.path.join(task_path, 'report_bubbleplot', 'Clostridiales_Dog_PU05.csv')
-    csv = open(bubbleplot, 'r').read()
-    return csv
+    bubbleplot = os.path.join(task_path, 'report_bubbleplot', '%s.csv' % sample)
+    
+    if os.path.exists(bubbleplot):
+        csv = open(bubbleplot, 'r').read()
+        return csv
+    
+    abort(404)
+
 
 @app.route('/heatmap_data/<int:task_id>')
 def return_heatmap_data(task_id):
