@@ -62,7 +62,7 @@ def main(task_path, task_id, region):
         server.starttls()
         server.login(FROM_MAIL, os.environ['SMTP_PASSWORD'])
         server.sendmail(FROM_MAIL, TO_MAIL, 
-            """From: %s\nTo: %s\nSubject: Task is completed\n\nPlease go to %s view the report.""" % (FROM_MAIL, TO_MAIL, "http://165.227.73.45/result/" + task_id))
+            """From: %s\nTo: %s\nSubject: Task is completed\n\nPlease go to %s view the report.""" % (FROM_MAIL, TO_MAIL, "https://forensic.sfs.uwm.edu/result/" + task_id))
         server.close()
     except Exception as e:
         with open(os.path.join(task_path, 'email_failed'), 'w') as f:
@@ -92,7 +92,7 @@ def main(task_path, task_id, region):
     with open(os.path.join(task_path, 'Rscript_logs.txt'), 'w') as logf:
         logf.write(log)
 
-    with open(os.path.join(task_path, 'done') as donef:
+    with open(os.path.join(task_path, 'done'), 'w') as donef:
         donef.write("done")
 
 try:
