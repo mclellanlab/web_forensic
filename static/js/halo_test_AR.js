@@ -32,10 +32,10 @@ var dataSource={};  // Object holds both senate and house data sources.
 // D3 formatters we will use for labels
 var formatDate = d3.time.format("%b %d, 20%y");
 
-function loadData(task_id) {
+function loadData(task_id, sample_name) {
 
     // Here we grab our data via the <code>d3.json</code> utility.
-    d3.csv("/bubbleplot_data/" + task_id, function (csv) {
+    d3.csv("/bubbleplot_data/" + task_id + "/" + sample_name, function (csv) {
 
         dataSource.house=csv;
         data=csv;

@@ -298,6 +298,7 @@ $(document).ready(function() {
     //Once the document is ready we set javascript and page settings
     var screenWidth;
     var screenHeight;
+    var task_id = '{{data.task_id}}';
 
     $(document).ready(function () {
 
@@ -324,7 +325,12 @@ $(document).ready(function() {
                 .style("width", screenWidth + "px")
                 .style("height", screenHeight + "px");
 
-        loadData({{data.task_id}});
+        $('#bubbleplot_sample_name').change(function() {
+             $('#viz_container').empty();
+	     loadData(task_id, $('#bubbleplot_sample_name').val());
+        });
+        $('#bubbleplot_sample_name').trigger('change');
+
 
         drawHeatmap({{data.task_id}}, '#heatmap'); // heatmap.js
 
