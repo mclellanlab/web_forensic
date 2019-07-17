@@ -105,6 +105,9 @@
                                         <td style="text-align: center">
                                             {% if outer_loop.index == 1 and loop.index == 1 %}
                                                 Sample Name
+                                                </td>
+                                                <td style="text-align: center">
+                                                {{ item }}
                                             {% elif outer_loop.index == 1 or loop.index == 1 %}
                                                 {{ item }}
                                             {% else %}
@@ -158,6 +161,9 @@
                                         <td style="text-align: center">
                                             {% if outer_loop.index == 1 and loop.index == 1 %}
                                                 Sample Name
+                                                </td>
+                                                <td style="text-align: center">
+                                                {{ item }}
                                             {% elif outer_loop.index == 1 or loop.index == 1 %}
                                                 {{ item }}
                                             {% else %}
