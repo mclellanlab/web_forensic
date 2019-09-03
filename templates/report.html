@@ -152,9 +152,19 @@
                                         {% endfor %}
                                         <td style="text-align: center">
                                             {{ data[classifier + '_samples_sums'][sample] }} ({{ data[classifier + '_samples_unique_count'][sample] }})
+
+                                            {% if data[classifier + '_samples_unique_count'][sample] < 10 %}
+                                            <a href="#" data-toggle="tooltip" title="Too few sequences in your sample matching to the classifiers, it can affect the predictions.">
+                                            <span class="glyphicon glyphicon-exclamation-sign"></span></a>
+                                            {% endif %}
                                         </td>
                                         <td style="text-align: center">
                                             {{ "{:,d}".format(data['reads_per_sample'][sample])}}
+
+                                            {% if data['reads_per_sample'][sample] < 5000 %}
+                                            <a href="#" data-toggle="tooltip" title="Too few reads in this sample, it can affect the predictions.">
+                                            <span class="glyphicon glyphicon-exclamation-sign"></span></a>
+                                            {% endif %}
                                         </td>
                                         <td style="text-align: center">
                                             {{ "{0:.2f}".format(100 * data[classifier + '_samples_sums'][sample]/data['reads_per_sample'][sample])}}%
