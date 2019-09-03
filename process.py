@@ -16,6 +16,7 @@ sample_names = set([])
 def main(task_path, task_id, region):
     infile = os.path.join(task_path, 'fasta.fa')
     outfile = os.path.join(task_path, 'counts_table.txt')
+    reads_file = os.path.join(task_path, 'reads_per_sample.txt')
     region_file = os.path.join(task_path, 'region')
     email = open(os.path.join(task_path, 'email')).read().strip()
 
@@ -27,10 +28,17 @@ def main(task_path, task_id, region):
     total_reads = 0
     reads_matched = 0
 
+    sample_reads = {}
+
     for seq_record in SeqIO.parse(infile, "fasta"):
         total_reads += 1
         sequence = seq_record.seq
         sample_name = seq_record.id.split('|')[0]
+
+        if sample_name not in sample_reads:
+            sample_reads[sample_name] = 0
+
+        sample_reads[sample_name] += 1
         sample_names.add(sample_name)
         if sequence in count_table:
             if not sample_name in count_table[str(sequence)]:
@@ -42,14 +50,59 @@ def main(task_path, task_id, region):
     output = open(outfile, 'w')
     output.write("\t".join(sample_names) + "\n")
 
+    with open(reads_file, 'w') as f:
+        f.write('sample_name\treads\n')
+        for name in sample_reads:
+            f.write('%s\t%s\n' % (str(name), str(sample_reads[name])))
+
+    sample_unique = {}
+    sample_sum = {}
+    bacterial_groups = ['Bacteroidales', 'Clostridiales']
+
+    for group in bacterial_groups:
+        sample_unique[group] = {}
+        sample_sum[group] = {}
+
     for sequence in count_table:
-        line = sequence_to_asv_name[str(sequence)] 
+        line = sequence_to_asv_name[str(sequence)]
+
+        if not line.startswith('b') or line.startswith('c'):
+            continue
+
+        group = 'Bacteroidales' if line.startswith('b') else 'Clostridiales'
 
         for sample_name in sample_names:
+            if sample_name not in sample_sum[group]:
+               sample_sum[group][sample_name] = 0
+
+            if sample_name not in sample_unique[group]:
+                sample_unique[group][sample_name] = 0
+
+            val = count_table[str(sequence)].get(sample_name, 0)
+
+            sample_sum[group][sample_name] += val
+            sample_unique[group][sample_name] += min(val, 1)
+
             line += '\t' + str(count_table[str(sequence)].get(sample_name, 0))
 
         output.write(line + '\n')
     output.close()
+
+    for group in bacterial_groups:
+        unique_path = os.path.join(task_path, group + '_samples_unique_count.txt')
+        sum_path = os.path.join(task_path, group + '_samples_sums.txt')
+
+        with open(unique_path, 'w') as f:
+            f.write('sample_name\tunique_count\n')
+            for name in sample_names:
+                f.write('%s\t%s\n' % (str(name), str(sample_unique[group].get(name, 0))))
+
+        with open(sum_path, 'w') as f:
+            f.write('sample_name\tsum\n')
+            for name in sample_names:
+                f.write('%s\t%s\n' % (str(name), str(sample_sum[group].get(name, 0))))
+
+
     os.remove(infile)
 
     #-----------------------

@@ -62,6 +62,12 @@ def show_task_result(task_id):
         data['task_id'] = str(task_id)
         data['email'] = open(os.path.join(task_path, "email"), 'r').read()
         data['sample_names'] = open(os.path.join(task_path, "counts_table.txt"), 'r').readline().strip().split('\t')
+        data['reads_per_sample'] = pd.read_csv(os.path.join(task_path, "reads_per_sample.txt"), sep='\t', index_col='sample_name').to_dict()['reads']
+
+        for group in ['Clostridiales', 'Bacteroidales']:
+            print(os.path.join(task_path, group, "_samples_sums.txt"))
+            data[group + '_samples_sums'] = pd.read_csv(os.path.join(task_path, group + "_samples_sums.txt"), sep='\t', index_col='sample_name').to_dict()['sum']
+            data[group + '_samples_unique_count'] = pd.read_csv(os.path.join(task_path, group + "_samples_unique_count.txt"), sep='\t', index_col='sample_name').to_dict()['unique_count']
 
         Clostridiales_path = os.path.join(task_path, "report_Clostridiales_predprob.txt")
         Bacteroidales_path = os.path.join(task_path, "report_Bacteroidales_predprob.txt")
