@@ -98,35 +98,51 @@
                           <div class="panel-heading">Clostridiales</div>
                           <div class="panel-body">
                               <table class="table">
-                                {% for row in data.Clostridiales %}
-                                    {% set outer_loop = loop %}
-                                    <tr>
-                                    {% for item in row %}
-                                        <td style="text-align: center">
-                                            {% if outer_loop.index == 1 and loop.index == 1 %}
-                                                Sample Name
-                                                </td>
-                                                <td style="text-align: center">
-                                                {{ item }}
-                                            {% elif outer_loop.index == 1 or loop.index == 1 %}
-                                                {{ item }}
-                                            {% else %}
-                                                <div class="chart-item" style="background-color: 
-                                                {% if item|float() < 40|float() %}
-                                                    #ffffff
-                                                {% elif item|float() < 45|float() %}
-                                                    #FEE08B
-                                                {% elif item|float() < 50|float() %}
-                                                    #D53E4F
-                                                {% else %}
-                                                    #9E0142
-                                                {% endif %}
-                                                !important;"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
-                                                </div>
-                                            {% endif %}
-                                        </td>
+                                {% set classifiers = ['Clostridiales', 'Bacteroidales'] %}
+                                <tr>
+                                    <td style="text-align: center">
+                                        Sample Name
+                                    </td>
+                                    <td style="text-align: center">
+                                        Classifier
+                                    </td>
+                                    {% for animal in data.animals %}
+                                    <td style="text-align: center">
+                                        {{ animal }}
+                                    </td>
                                     {% endfor %}
+                                </tr>
+                                {% for sample in data.sample_names %}
+                                    {% set sample_loop = loop %}
+                                    {% for classifier in classifiers %}
+                                    {% set classifier_loop = loop %}
+                                    <tr>
+                                        {% if classifier_loop.index % 2 == 1 %}
+                                        <td style="text-align: center" rowspan="2">
+                                            {{ sample }}
+                                        </td>
+                                        {% endif %}
+                                        <td style="text-align: center">
+                                            {{ classifier }}
+                                        </td>
+                                        {% for item in data[classifier][sample_loop.index][1:] %}
+                                        <td style="text-align: center">
+                                            <div class="chart-item" style="background-color: 
+                                            {% if item|float() < 40|float() %}
+                                                #ffffff
+                                            {% elif item|float() < 45|float() %}
+                                                #FEE08B
+                                            {% elif item|float() < 50|float() %}
+                                                #D53E4F
+                                            {% else %}
+                                                #9E0142
+                                            {% endif %}
+                                            !important;"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
+                                            </div>
+                                        </td>
+                                        {% endfor %}
                                     </tr>
+                                    {% endfor %}
                                 {% endfor %}
                                 </table>
                                 <div style="float: right;">
@@ -151,69 +167,6 @@
                                 <div class="clearfix"></div>
                                 <button onclick="$('#legend1_1').toggle();" class="btn btn-info" style="margin-bottom: 10px;">Show Info</button>
                                 <div id="legend1_1" class="panel panel-default" style="display: none; text-align: justify;">
-                                    <div class="panel-body">
-                                        Colors represent voting tree percentage generated by random forest classification. That is, more the profile of the tested sample is similar to be classifier’s bacterial signature, higher the percentage will be. For a given source, if the index > 50%, the tested sample obtained the majority of the voting trees, is it considerated to be contaminated by the source. Inversely, if the index < 40%, the tested sample is not considerated to be contaminated by the source.
-                                    </div>
-                                </div>
-                          </div>
-                        </div>
-                        <div class="panel panel-default">
-                          <div class="panel-heading">Bacteroidales</div>
-                          <div class="panel-body">
-                              <table class="table">
-                                {% for row in data.Bacteroidales %}
-                                    {% set outer_loop = loop %}
-                                    <tr>
-                                    {% for item in row %}
-                                        <td style="text-align: center">
-                                            {% if outer_loop.index == 1 and loop.index == 1 %}
-                                                Sample Name
-                                                </td>
-                                                <td style="text-align: center">
-                                                {{ item }}
-                                            {% elif outer_loop.index == 1 or loop.index == 1 %}
-                                                {{ item }}
-                                            {% else %}
-                                                <div class="chart-item" style="background-color: 
-                                                {% if item|float() < 40|float() %}
-                                                    #ffffff
-                                                {% elif item|float() < 45|float() %}
-                                                    #FEE08B
-                                                {% elif item|float() < 50|float() %}
-                                                    #D53E4F
-                                                {% else %}
-                                                    #9E0142
-                                                {% endif %}
-                                                !important;"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
-                                                </div>
-                                            {% endif %}
-                                        </td>
-                                    {% endfor %}
-                                    </tr>
-                                {% endfor %}
-                                </table>
-                                <div style="float: right;">
-                                    <table class="legend">
-                                        <tr>
-                                            <td rowspan="2">Legend</td>
-                                            <td>&lt;40</td>
-                                            <td>&lt;45</td>
-                                            <td>&lt;50</td>
-                                            <td>&#8805;50</td>
-                                            <td>%</td>
-                                        </tr>
-                                        <tr>
-                                            <td><div class="chart-item" style="background-color: #ffffff !important;"></div></td>
-                                            <td><div class="chart-item" style="background-color: #FEE08B !important;"></div></td>
-                                            <td><div class="chart-item" style="background-color: #D53E4F !important;"></div></td>
-                                            <td><div class="chart-item" style="background-color: #9E0142 !important;"></div></td>
-                                            <td></td>
-                                        </tr>
-                                    </table>
-                                </div>
-                                <div class="clearfix"></div>
-                                <button onclick="$('#legend1_2').toggle();" class="btn btn-info" style="margin-bottom: 10px;">Show Info</button>
-                                <div id="legend1_2" class="panel panel-default" style="display: none; text-align: justify;">
                                     <div class="panel-body">
                                         Colors represent voting tree percentage generated by random forest classification. That is, more the profile of the tested sample is similar to be classifier’s bacterial signature, higher the percentage will be. For a given source, if the index > 50%, the tested sample obtained the majority of the voting trees, is it considerated to be contaminated by the source. Inversely, if the index < 40%, the tested sample is not considerated to be contaminated by the source.
                                     </div>

@@ -72,6 +72,7 @@ def show_task_result(task_id):
 
             data['Clostridiales'] = [line.strip().split('\t') for line in open(Clostridiales_path, 'r').readlines()]
             data['Bacteroidales'] = [line.strip().split('\t') for line in open(Bacteroidales_path, 'r').readlines()]
+            data['animals'] = data['Bacteroidales'][0]
         else:
             data['successful'] = False
 
