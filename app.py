@@ -65,7 +65,6 @@ def show_task_result(task_id):
         data['reads_per_sample'] = pd.read_csv(os.path.join(task_path, "reads_per_sample.txt"), sep='\t', index_col='sample_name').to_dict()['reads']
 
         for group in ['Clostridiales', 'Bacteroidales']:
-            print(os.path.join(task_path, group, "_samples_sums.txt"))
             data[group + '_samples_sums'] = pd.read_csv(os.path.join(task_path, group + "_samples_sums.txt"), sep='\t', index_col='sample_name').to_dict()['sum']
             data[group + '_samples_unique_count'] = pd.read_csv(os.path.join(task_path, group + "_samples_unique_count.txt"), sep='\t', index_col='sample_name').to_dict()['unique_count']
 

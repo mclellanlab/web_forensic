@@ -111,6 +111,15 @@
                                         {{ animal }}
                                     </td>
                                     {% endfor %}
+                                    <td style="text-align: center">
+                                        Reads matched (unique reads)
+                                    </td>
+                                    <td style="text-align: center">
+                                        Total reads
+                                    </td>
+                                    <td style="text-align: center">
+                                        Percentage
+                                    </td>
                                 </tr>
                                 {% for sample in data.sample_names %}
                                     {% set sample_loop = loop %}
@@ -141,6 +150,15 @@
                                             </div>
                                         </td>
                                         {% endfor %}
+                                        <td style="text-align: center">
+                                            {{ data[classifier + '_samples_sums'][sample] }} ({{ data[classifier + '_samples_unique_count'][sample] }})
+                                        </td>
+                                        <td style="text-align: center">
+                                            {{ "{:,d}".format(data['reads_per_sample'][sample])}}
+                                        </td>
+                                        <td style="text-align: center">
+                                            {{ "{0:.2f}".format(100 * data[classifier + '_samples_sums'][sample]/data['reads_per_sample'][sample])}}%
+                                        </td>
                                     </tr>
                                     {% endfor %}
                                 {% endfor %}
