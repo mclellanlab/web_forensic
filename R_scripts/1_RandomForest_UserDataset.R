@@ -19,7 +19,7 @@ if (length(args) > 0) {
 }
 
 if (region == 'V6') {
-    animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
+    animal<-c("cat", "dog", "pet", "cow", "deer", "ruminant", "pig", "sewage")
 } else {
     animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
 }
