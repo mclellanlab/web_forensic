@@ -26,9 +26,9 @@ if (length(args) > 0) {
 
 
 if (region == 'V6') {
-    animal<-c("Bird", "Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Rabbit", "Pig", "Sewage")
+    animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
 } else {
-    animal<-c("Bird", "Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
+    animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
 }
 
 bacterial_groups<-c("Bacteroidales", "Clostridiales")
