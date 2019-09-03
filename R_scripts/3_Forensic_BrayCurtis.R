@@ -27,7 +27,7 @@ NbTree2 = 1000
 
 
 ################################################################################
-animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
+animal<-c("cat", "dog", "pet", "cow", "deer", "ruminant", "pig", "sewage")
 BacterialGroup<-c('Clostridiales', 'Bacteroidales')
 
 User.Filename<-paste(workingDirectory, "Classification/", UserDataset, ".txt", sep="")
