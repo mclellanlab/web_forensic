@@ -3,10 +3,10 @@ ls()
 options(error=traceback)
 
 
-library(devtools)
-library(plyr)
+#library(devtools)
+#library(plyr)
 library(dplyr)
-library(reshape2)
+#library(reshape2)
 
 
 
@@ -19,27 +19,23 @@ args <- commandArgs(trailingOnly = TRUE)
 if (length(args) > 0) {
     print(args)
     User.Filename <- args[1]
-    output_directory <- args[2]
+    Output.Directory <- args[2]
     region <- args[3]
 }
 
 
+animal<-as.character(read.table(paste0("data/data_", region, "/animal_list.txt"))[,1])
+bacterial_groups<-as.character(read.table(paste0("data/data_", region, "/bacterialgroup_list.txt"))[,1])
 
-if (region == 'V6') {
-    animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
-} else {
-    animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
-}
 
-bacterial_groups<-c("Bacteroidales", "Clostridiales")
-bubbleplot_directory <- paste0(output_directory, "_bubbleplot")
+bubbleplot_directory <- paste0(Output.Directory, "_bubbleplot")
 dir.create(bubbleplot_directory)
 
 for (y in 1:length(bacterial_groups)) {
     BacterialGroup=bacterial_groups[y]
 
     # Importation
-    gini<-read.table(paste0("data/Gini_", BacterialGroup, "_", region, "/Gini.txt"), sep="\t", h=T)
+    gini<-read.table(paste0("data/MDG_", region, "/list_ASVs_", BacterialGroup, ".txt"), sep="\t", h=T)
     predata<-read.table(User.Filename, h=T, sep="\t", row.names = 1)
     
     ###############################################################################################
@@ -59,7 +55,7 @@ for (y in 1:length(bacterial_groups)) {
     # Estimation of the proportions for all animal except Pet and Ruminant
 
     ## Select only sequences in the classifiers (except Pet and Ruminant)
-    gini.notPetRuminant<-subset(gini, Type!="Pet" & Type!="Ruminant")
+    gini.notPetRuminant<-subset(gini, Type!="pet" & Type!="ruminant")
     data.notPetRuminant.gini<-subset(predata, rownames(predata) %in% gini.notPetRuminant$SequenceID)
     data.notPetRuminant.gini.ra<-sweep(data.notPetRuminant.gini, 2, colSums(data.notPetRuminant.gini), '/')
     data.notPetRuminant.gini.ra<-replace(data.notPetRuminant.gini.ra, is.na(data.notPetRuminant.gini.ra),0)
@@ -78,7 +74,7 @@ for (y in 1:length(bacterial_groups)) {
     # Estimation of the proportions for all animal except Cat, Dog, Cow and Deer
 
     ## Select only sequences in the classifiers (except Cat, Dog, Cow and Deer)
-    gini.notCatDogCowDeer<-subset(gini, Type!="Cat" & Type!="Dog" & Type!="Cow" & Type!="Deer")
+    gini.notCatDogCowDeer<-subset(gini, Type!="cat" & Type!="dog" & Type!="cow" & Type!="deer")
     data.notCatDogCowDeer.gini<-subset(predata, rownames(predata) %in% gini.notCatDogCowDeer$SequenceID)
     data.notCatDogCowDeer.gini.ra<-sweep(data.notCatDogCowDeer.gini, 2, colSums(data.notCatDogCowDeer.gini), '/')
     data.notCatDogCowDeer.gini.ra<-replace(data.notCatDogCowDeer.gini.ra, is.na(data.notCatDogCowDeer.gini.ra),0)
@@ -95,26 +91,9 @@ for (y in 1:length(bacterial_groups)) {
 
     ###############################################################################################
     # Estimation of the proportions for all sources
-    if (region == 'V6') {
-        Bird<-(results.notCatDogCowDeer$Bird+results.notPetRuminant$Bird)/2
-        Rabbit<-(results.notCatDogCowDeer$Rabbit+results.notPetRuminant$Rabbit)/2
-        Pig<-(results.notCatDogCowDeer$Pig+results.notPetRuminant$Pig)/2
-        Sewage<-(results.notCatDogCowDeer$Sewage+results.notPetRuminant$Sewage)/2
-        pre.pred.mean<-as.data.frame(cbind(Bird, results.notPetRuminant$Cat, results.notPetRuminant$Dog, results.notCatDogCowDeer$Pet, results.notPetRuminant$Cow, results.notPetRuminant$Deer, results.notCatDogCowDeer$Ruminant, Rabbit, Pig, Sewage))
-        names(pre.pred.mean)<-c("Bird", "Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Rabbit", "Pig", "Sewage")
-        row.names(pre.pred.mean)<-row.names(results.notCatDogCowDeer)
-        pred.mean<-as.data.frame(t(pre.pred.mean))
-        pred.mean$Source<-row.names(pred.mean)
-    } else {
-        Bird<-(results.notCatDogCowDeer$Bird+results.notPetRuminant$Bird)/2
-        Pig<-(results.notCatDogCowDeer$Pig+results.notPetRuminant$Pig)/2
-        Sewage<-(results.notCatDogCowDeer$Sewage+results.notPetRuminant$Sewage)/2
-        pre.pred.mean<-as.data.frame(cbind(Bird, results.notPetRuminant$Cat, results.notPetRuminant$Dog, results.notCatDogCowDeer$Pet, results.notPetRuminant$Cow, results.notPetRuminant$Deer, results.notCatDogCowDeer$Ruminant, Pig, Sewage))
-        names(pre.pred.mean)<-c("Bird", "Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant","Pig", "Sewage")
-        row.names(pre.pred.mean)<-row.names(results.notCatDogCowDeer)
-        pred.mean<-as.data.frame(t(pre.pred.mean))
-        pred.mean$Source<-row.names(pred.mean)
-    }
+    source("/Users/adelaideroguet/Documents/GitHub/web_forensic/data/data_v6/function.R")
+    
+
 
 
 
@@ -125,7 +104,7 @@ for (y in 1:length(bacterial_groups)) {
 
 for (z in 1:length(names(predata))) {
   
-          Sample<-names(predata)[z]
+        Sample<-names(predata)[z]
 
         # Extract the data related to the selected sample 
         ASV.data<-pred.ra[,c("ASV", "Source", Sample)]

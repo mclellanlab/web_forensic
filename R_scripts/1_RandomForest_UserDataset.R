@@ -12,19 +12,16 @@ args <- commandArgs(trailingOnly = TRUE)
 if (length(args) > 0) {
     print(args)    
     User.Filename <- args[1]
-    OutputDirectory <- args[2]
+    Output.Directory <- args[2]
     region <- args[3]
 } else {
     stop("No arguments")
 }
 
-if (region == 'V6') {
-    animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
-} else {
-    animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
-}
 
-bacterial_groups<-c("Bacteroidales", "Clostridiales")
+animal<-as.character(read.table(paste0("data/data_", region, "/animal_list.txt"))[,1])
+bacterial_groups<-as.character(read.table(paste0("data/data_", region, "/bacterialgroup_list.txt"))[,1])
+
 
 # User database
 pre.user<-read.table(User.Filename, h=T, sep="\t", row.names = 1)
@@ -38,12 +35,12 @@ for (y in 1:length(bacterial_groups)) {
     for (x in 1:length(animal)) { 
         Animal=animal[x]
 
-        GiniFileName<-paste0("data/Gini_", BacterialGroup, "_", region, "/", Animal, ".txt")
+        GiniFileName<-paste0("data/MDG_", region, "/", BacterialGroup, "_", Animal, ".txt")
 
         pre.names.seq.gini<-read.table(GiniFileName, h=F, sep="\t")
         names.seq.gini<-as.vector(pre.names.seq.gini$V1)
 
-        fit_Filename<-paste0("data/RF_training_", BacterialGroup, "_" , region, "/Fit_", Animal, ".RData")
+        fit_Filename<-paste0("data/RF_training_", region, "/fit_", BacterialGroup, "_", Animal, ".RData")
         load(fit_Filename)
         ################################################################################
 
@@ -68,11 +65,12 @@ for (y in 1:length(bacterial_groups)) {
 
     pred.withzero.prob.final<-rbind(pred.names, pred.withzero.prob); rownames(pred.withzero.prob.final)[1]<-" "
 
-    write.table(pred.withzero.prob.final, paste0(OutputDirectory, '_', BacterialGroup ,'_predprob.txt'), sep="\t", quote=FALSE, col.names = FALSE)
+    write.table(pred.withzero.prob.final, paste0(Output.Directory, '_', BacterialGroup ,'_predprob.txt'), sep="\t", quote=FALSE, col.names = FALSE)
 
     pred.withzero.response.simple<-as.character(interaction(as.data.frame(pred.withzero.response),sep="/"))
     pred.withzero.response.simple.1<-as.data.frame(gsub("-/", "", pred.withzero.response.simple))
     pred.withzero.response.simple.final<-as.data.frame(lapply(pred.withzero.response.simple.1, gsub, pattern = "/-", replacement = "", fixed = FALSE))
     row.names(pred.withzero.response.simple.final)<-rownames(pred.withzero.prob)
-    write.table(pred.withzero.response.simple.final, paste0(OutputDirectory, '_', BacterialGroup , '_predresponse_simple.txt'), sep="\t", quote=FALSE, col.names = FALSE, row.names = TRUE)
+    write.table(pred.withzero.response.simple.final, paste0(Output.Directory, '_', BacterialGroup , '_predresponse_simple.txt'), sep="\t", quote=FALSE, col.names = FALSE, row.names = TRUE)
 }
+

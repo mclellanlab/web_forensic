@@ -20,16 +20,11 @@ if (length(args) > 0) {
 
 
 
-if (region == 'V6') {
-  animal<-c( "Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
-} else {
-  animal<-c("Cat", "Dog", "Pet", "Cow", "Deer", "Ruminant", "Pig", "Sewage")
-}
 
-
-
+animal<-as.character(read.table(paste0("data/data_", region, "/animal_list.txt"))[,1])
 pred.names<-vector(length=length(animal))
-bacterial_groups<-c("Bacteroidales", "Clostridiales")
+
+bacterial_groups<-as.character(read.table(paste0("data/data_", region, "/bacterialgroup_list.txt"))[,1])
 
 
 for (y in 1:length(bacterial_groups)) {
@@ -38,7 +33,7 @@ for (y in 1:length(bacterial_groups)) {
 
 
 # Import
-pre.training<-read.table(paste0("data/", BacterialGroup, "_data_", region, ".txt"), sep="\t", h=T, row.names = 1)
+pre.training<-read.table(paste0("data/data_", region, "/", BacterialGroup, "_data_", region, ".txt"), sep="\t", h=T, row.names = 1)
 pre.data.user<-read.table(User.Filename, h=T, sep="\t", row.names = 1)
 
 training<-pre.training[,-1]
@@ -58,7 +53,7 @@ for (x in 1:length(animal)) {
   
   ################################################################################
   Animal=animal[x]
-  Gini<-read.table(paste0("data/Gini_", BacterialGroup, "_", region, "/", Animal, ".txt"), h=F, sep='\t')
+  Gini<-read.table(paste0("data/MDG_", region, "/", BacterialGroup, "_", Animal, ".txt"), h=F, sep='\t')
   names.seq.gini<-as.vector(Gini$V1)
   ################################################################################
   
@@ -66,20 +61,20 @@ for (x in 1:length(animal)) {
   # creation of the train dataset 
   title=data=data.training=training.2=training.3=training.4=0
   
-  if(Animal=='Pet'){
-    title.1.cat<-gsub("Cat","Pet",pretitle,ignore.case=F)
-    title.1.cat.dog<-gsub("Dog","Pet",title.1.cat,ignore.case=F)
-    title<-replace(title.1.cat.dog, which(title.1.cat.dog!=Animal) , "Other")
-  } else if(Animal=='Ruminant') {
-    title.1.cow<-gsub("Cow","Ruminant",pretitle,ignore.case=F)
-    title.1.cow.deer<-gsub("Deer","Ruminant",title.1.cow,ignore.case=F)
-    title<-replace(title.1.cow.deer, which(title.1.cow.deer!=Animal) , "Other")
+  if(Animal=='pet'){
+    title.1.cat<-gsub("cat","pet",pretitle,ignore.case=F)
+    title.1.cat.dog<-gsub("dog","pet",title.1.cat,ignore.case=F)
+    title<-replace(title.1.cat.dog, which(title.1.cat.dog!=Animal) , "other")
+  } else if(Animal=='ruminant') {
+    title.1.cow<-gsub("cow","ruminant",pretitle,ignore.case=F)
+    title.1.cow.deer<-gsub("deer","ruminant",title.1.cow,ignore.case=F)
+    title<-replace(title.1.cow.deer, which(title.1.cow.deer!=Animal) , "other")
   } else {
-    title<-replace(pretitle, which(pretitle!=Animal) , "Other")
+    title<-replace(pretitle, which(pretitle!=Animal) , "other")
   } 
   
   training.1<-cbind(title, training)
-  training.2<-subset(training.1, title!="Other")[,-1]
+  training.2<-subset(training.1, title!="other")[,-1]
   training.3<-training.2[, colnames(training.2) %in% names.seq.gini]
   training.4<-sweep(training.3, 1, rowSums(training.3), '/')
   training.5<-replace(training.4, is.na(training.4),0)
