@@ -66,7 +66,7 @@ def main(task_path, task_id, region):
     for sequence in count_table:
         line = sequence_to_asv_name[str(sequence)]
 
-        if not line.startswith('b') or line.startswith('c'):
+        if not (line.startswith('b') or line.startswith('c')):
             continue
 
         group = 'Bacteroidales' if line.startswith('b') else 'Clostridiales'
