@@ -68,8 +68,8 @@ def show_task_result(task_id):
             data[group + '_samples_sums'] = pd.read_csv(os.path.join(task_path, group + "_samples_sums.txt"), sep='\t', index_col='sample_name').to_dict()['sum']
             data[group + '_samples_unique_count'] = pd.read_csv(os.path.join(task_path, group + "_samples_unique_count.txt"), sep='\t', index_col='sample_name').to_dict()['unique_count']
 
-        Clostridiales_path = os.path.join(task_path, "report_Clostridiales_predprob.txt")
-        Bacteroidales_path = os.path.join(task_path, "report_Bacteroidales_predprob.txt")
+        Clostridiales_path = os.path.join(task_path, "report_clostridiales_predprob.txt")
+        Bacteroidales_path = os.path.join(task_path, "report_bacteroidales_predprob.txt")
 
         if os.path.exists(Clostridiales_path) and os.path.exists(Bacteroidales_path):
             data['successful'] = True
