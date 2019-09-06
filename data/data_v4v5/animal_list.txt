@@ -1,0 +1,8 @@
+cat
+dog
+pet
+cow
+deer
+ruminant
+pig
+sewage
