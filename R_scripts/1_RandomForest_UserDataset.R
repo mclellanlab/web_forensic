@@ -19,8 +19,8 @@ if (length(args) > 0) {
 }
 
 
-animal<-as.character(read.table(paste0("data/data_", region, "/animal_list.txt"))[,1])
-bacterial_groups<-as.character(read.table(paste0("data/data_", region, "/bacterialgroup_list.txt"))[,1])
+animal<-as.character(read.table(paste0("../data/data_", region, "/animal_list.txt"))[,1])
+bacterial_groups<-as.character(read.table(paste0("../data/data_", region, "/bacterialgroup_list.txt"))[,1])
 
 
 # User database
