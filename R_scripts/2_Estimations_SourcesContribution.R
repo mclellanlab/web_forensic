@@ -91,7 +91,7 @@ for (y in 1:length(bacterial_groups)) {
 
     ###############################################################################################
     # Estimation of the proportions for all sources
-    source("/Users/adelaideroguet/Documents/GitHub/web_forensic/data/data_v6/function.R")
+    source("data/data_v6/function.R")
     
 
 
