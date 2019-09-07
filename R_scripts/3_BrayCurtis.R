@@ -105,7 +105,6 @@ for (x in 1:length(animal)) {
   
 }
 
-BacterialGroup_o<-ifelse(BacterialGroup=="bacteroidales","Bacteroidales", "Clostridiales")
 braycurtis.final<-as.data.frame(braycurtis)
 names(braycurtis.final)<-animal
 write.table(braycurtis.final, paste0(output_directory, '_BrayCurtis_', BacterialGroup_o , '.txt'), sep="\t", quote=FALSE, col.names = TRUE, row.names = TRUE)
