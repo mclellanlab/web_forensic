@@ -100,7 +100,7 @@ def return_heatmap_data(task_id):
     task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
     
     output = {}
-    for target in ['clostridiales', 'bacteroidales']:
+    for target in ['Clostridiales', 'Bacteroidales']:
         heatmap_data = os.path.join(task_path, 'report_BrayCurtis_'+target+'.txt')
         df = pd.read_csv(pd.compat.StringIO("sample_name\t" + open(heatmap_data).read()), delimiter='\t')
         output[target] = df.melt(id_vars=['sample_name']).to_json(orient='records')
