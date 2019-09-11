@@ -19,6 +19,11 @@ def homepage():
     return render_template('index.html')
 
 
+@app.route('/faq')
+def faq():
+    return render_template('faq.html')    
+
+
 @app.route('/newtask', methods = ['POST'])
 def start_new_task():
    if request.method == 'POST':

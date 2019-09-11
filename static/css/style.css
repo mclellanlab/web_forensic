@@ -37,3 +37,8 @@ text.mono {
     font-family: Consolas, courier;
     fill: #000;
 }
+
+.btn-huge{
+    padding-top:10px;
+    padding-bottom:10px;
+}
