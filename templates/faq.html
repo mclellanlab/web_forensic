@@ -25,36 +25,26 @@
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10">
-                        <h4>What does FORENSIC mean?</h4>
-<p>FORENSIC means random FORest ENteric Source IdentifiCation.</p>
 
-<h4>What are the sources that can be predicted?</h4>
+                <h4><b>What are the sources that can be predicted?</b></h4>
 <p>To date, FORENSIC holds the fecal signatures of 8 sources for the V6 and V4V5 regions of the 16S rRNA gene. It includes the cat, dog, pet (= cat + dog), cow, deer, ruminant (= cow + deer), pig, sewage.</p>
 
-<h4>How does FORENSIC work?</h4>
-<p>FORENSIC uses the random forest classification approach to perform fecal source identification using 16S rRNA gene amplicons. To do so, random forest first identified the fecal bacterial signatures for every source investigated. The signatures, so-called classifiers, list the sequences that are specific to a source or with a specific relative abundance. These signatures are compared to the bacterial assemblage in the unknown samples. Prediction percentages, i.e., voting tree percentages, translate the degree of similarity between the signatures and the unknown samples. More similar the bacterial signature and the fecal signature is, higher the percentage might be.</p>
-
-<h4>What is a classifier?</h4>
+<h4><b>What is a classifier?</b></h4>
 <p>A classifier lists the sequences and their relative abundance that constitute the fecal signature of a given source.</p>
 
-<h4>What data should I upload? </h4>
-<p>FORENSIC can only process fasta with sequences targeting the region V6 or V4V5 of the 16S rRNA gene. The list of the primers used to amplify these regions is listed here (LINK TO THE PAGE:). Raw fastq have been trimmed and merged using this workflow (LINK TO THE DOCUMENT:).
-It is crucial to display headers as below, i.e., separate the sample ID and the sequence ID by a vertical bar (so-called pipe) "|"):
->sampleID|sequenceID</p>
-
-<h4>I already processed my sequences using dada2, should I re-process everything using CUTADAPT and PEAR?</h4>
+<h4><b>I already processed my sequences using dada2, should I re-process everything using CUTADAPT and PEAR?</b></h4>
 <p>Preliminary explorations showed that FORENSIC could not correctly identify the bacterial signatures in tested samples using data processed by dada2. This incompatibility might originate from the fact that dada2 may shorten sequences of a nucleotide during the denoising step. This is not an issue when studying the whole bacterial community, but since FORENSIC is looking for the exact sequence matches between the signatures and the sample to test, predictions can be significantly altered. </p>
 
-<h4>Can I use data generated using another sequencing platform than Illumina?</h4>
+<h4><b>Can I use data generated using another sequencing platform than Illumina?</b></h4>
 <p>We only validated the predictions using Illumina sequence data. We would be pleased to test FORENSIC using other technologies, such as minION.</p>
 
-<h4>FORENSIC tests automatically for multiples sources, is it possible to test samples for a specific classifier?</h4>
+<h4><b>FORENSIC tests automatically for multiples sources, is it possible to test samples for a specific classifier?</b></h4>
 <p>The classifiers and the associated predictions are independent. The prediction of one classifier does not influence the predictions of the other classifiers.  In other words, identifying the sewage signature in a sample does not weaken the probability to detect the cow signature in that same sample.</p>
 
-<h4>The source I would like to target is not in FORENSIC?</h4>
+<h4><b>The source I would like to target is not in FORENSIC?</b></h4>
 <p>If you have enough representative samples, we could implement this source in FORENSIC. Let's talk about it.</p>
 
-<h4>How long is an analysis?</h4>
+<h4><b>How long should last an analysis?</b></h4>
 <p>The analysis should take a few minutes, depending on the size of your fasta: If it takes longer than that, feel free to contact us.</p>
     </div>
 
