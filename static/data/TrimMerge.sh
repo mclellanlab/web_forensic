@@ -47,7 +47,7 @@ then
 	primerR="CGACRRCCATGCANCACCT"
 	minlength=54
 	maxlength=66
-	errorrate=0.25
+	errorrate=0.12
 elif [[ $region == "V4V5" ]]
 then
 	primerF="CCAGCAGCYGCGGTAAN"
@@ -78,21 +78,12 @@ cd ../PEAR/temp/
 
 for file in *.gz; do gzip -d ${file}; printf "Unzipped ${file}\n"; done
 
-#for file in *.fastq
-#do
-#	newName=$(printf '%s' $file | gsed -r 's/(_R[12]).*$/\1.fastq/')
-#	mv $file $newName
-#done
-
 for i in *.fastq; do mv "$i" "${i/$removeCharacter/}"; done
 
 
 
-
-printf "\n\n### Merging using PEAR ###\n"
-
-
 	## PEAR processing
+printf "\n\n### Merging using PEAR ###\n"
 qualitytrimming=0								# Quality score threshold for trimming the low quality part of a read. If the quality scores of two consecutive bases are strictly less than the specified threshold, the rest of the read will be trimmed. (default: 0)
 basesN=0										# Maximal proportion of uncalled bases in a read. Setting this value to 0 will discard all reads containing uncalled bases (N). The other extreme setting is 1 which causes PEAR to process all reads independent on the number of uncalled bases. (default: 1)
 LOG_FILE_PEAR="../log_PEAR.log"
@@ -101,6 +92,7 @@ for fileR1 in *$R1*; do
     fileR2=${fileR1/$R1/$R2}
     file_o=${fileR1/$R1*.fastq/}; printf "Merging ${fileR1} and ${fileR2} " 1>&3
     pear -n $minlength -m $maxlength -q $qualitytrimming -u $basesN -j $threads -f $fileR1 -r $fileR2 -o  "../${file_o}"; printf "done\n" 1>&3
+    rm -rf $fileR1 $fileR2 
 done 3>&1 1>>${LOG_FILE_PEAR} 2>&1
 
 
@@ -130,7 +122,7 @@ for file in *.temp.fasta; do
 	awk '/>/{sub(">","&"FILENAME"|");sub(/\.temp.fasta/,x)}1' $file | awk '{print $1}' | awk '{gsub(/:/,"-")}1' > "$file_o"
 done
 
-
+rm -rf *temp.fasta
 
 
 
@@ -150,7 +142,7 @@ cat *.fa > ../$output_file; printf "\n\n${workingPATH}${output_file} generated\n
 for file in *.fastq; do gzip ${file}; printf "Zipped ${file}\n"; done
 for file in *.fa; do cp ${file} ../fasta/${file}; printf "${workingPATH}fasta/${file} copied\n"; done
 
-rm -rf *temp.fasta
+
 rm -rf *.fa
 rm -r temp
 
