@@ -29,7 +29,7 @@
                         <div class="text-center">
                             <form action="/newtask" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="form-group">
-                                    <label for="file">Input: Fasta file only (not compressed) </label>
+                                    <label for="file">Input: Fasta file only (not compressed) <br> A single fasta containing a minimum of two samples can be uploaded at a time<br>(in headers, sample ID and sequence ID have to be separated by a vertical bar: >SampleID|SequenceID)</label>
                                     <input type="file" name="file" id="file" />
                                     <!-- <label for="exampleInputEmail1">Email address</label>
                                     <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> -->
@@ -73,8 +73,8 @@
                          <span class="li-dot"> 2 </span>
                          <p style="padding-left: 25px;">Reads must be trimmed using <a href="https://cutadapt.readthedocs.io/en/stable/guide.html">CUTADAPT</a> and merged using <a href="https://sco.h-its.org/exelixis/web/software/pear/">PEAR</a> according to the V4V5 or V6 workflow (<a href="{{ url_for('static', filename='data/TrimMerge.sh') }}">bash </a> or <a href="{{ url_for('static', filename='data/TrimMerge.txt') }}">text</a> version). Warning: some parameters have to be set manually before being used as an automated script. This workflow will generated one fasta file containing your different samples.</p>
                          <span class="li-dot"> 3 </span>
-                         <p style="padding-left: 25px;">FORENSIC supports only fasta files (not compressed). Headers have to display the sample ID and the sequence ID separated by a vertical bar “|" (if you followed the workflow above, you are good to go):<br>
-                            sampleID|sequenceID
+                         <p style="padding-left: 25px;">FORENSIC supports only fasta files (not compressed). A header line is REQUIRED and consists of the sampleID and the sequence ID separated by a vertical bar "|" (if you followed the workflow above, you are good to go):<br>
+                            >sampleID|sequenceID (example: >BeachSample1|D4ZHLFP1-44-D15PUACXX-2-1101-1236-2324)
                             <br> <br>
                             An example, representing the V6 artificial community in Roguet et al. paper, is downloadable <a href="{{ url_for('static', filename='data/test_v6.fa.7z') }}">here</a>. </p>
                     <br>
@@ -126,7 +126,7 @@
         </div>
         <footer class="footer">
             <div class="container">
-                <p class="text-muted"> contacts: roguet@uwm.edu, ozcan@uchicago.edu<br>© 2019 Funded by National Institutes of Health<br>Not Peer Reviewed</p>
+                <p class="text-muted"> contacts: roguet@uwm.edu, ozcan@uchicago.edu<br><br>© 2019 Funded by National Institutes of Health<br>Not Peer Reviewed</p>
             </div>
         </footer>
     <div id="modalUploading" class="modal fade" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top:15%; overflow-y:visible;">
