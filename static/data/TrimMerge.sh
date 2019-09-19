@@ -27,7 +27,11 @@ cutadapt --version				# http://cutadapt.readthedocs.io/en/stable/
 pear --version					# https://sco.h-its.org/exelixis/web/software/pear/
 gzip -v 
 
-# You shouldn't get an error message when running the commands below. If yes, you need to re-install them
+# You shouldn't get an error message when running the commands below. If yes, you need to re-install them. The easiest way to do it is to use anaconda. 
+	# 1. to install conda: https://www.anaconda.com/distribution/
+	# 2. to install cutadapt (unix+mac), run the command: conda install -c bioconda cutadapt 
+	# 3. to install pear (unix+mac), run the command: conda install -c bioconda pear
+	
 
 
 ##############################################################################################################################
