@@ -1,23 +1,56 @@
+##############################################################################################################################
+##### READ ME ################################################################################################################
+##############################################################################################################################
+	
+	# FORENSIC supports only fasta file!
+	# WARNING: headers have to be structure like this: 
+	# >sampleID|sequenceID (=> sampleID first, then "|", then sequence ID)
+
+	# Please find below the script to trim and merge your fasta.
+	# It trim the primers using CUTADAPT and merge the pair-end reads using PEAR
+	# All samples will be concatenated in one fasta that is formated for FORENSIC
+
+	# If you want to use that script has a semi-automated script, you need to:
+	# 	1. Manually change the parameters between the lines 35 and 43
+	#	2. Save the file
+	#	3. In the terminal, you need to give the autorization of the script TrimMerge.sh 
+	#	For that: chmod +x TrimMerge.sh. 
+	# 	Run the script = copy and paste the path of TrimMerge.sh in the terminal
 
 
-##### Check if CUTADAPT and PEAR are correctly installed. You shouldn't get an error message when running the commands below. If yes, please considering instal as advised on the respective websites.
+
+############################################################################################################################## 
+##### 1. Check if the softwares are properly installed
 cutadapt --version				# http://cutadapt.readthedocs.io/en/stable/
 pear --version					# https://sco.h-its.org/exelixis/web/software/pear/
+gzip -v 
+
+# You shouldn't get an error message when running the commands below. If yes, you need to re-install them
 
 
-#####Parameters that can/have to be changed by the user #######################################################
-
-# General parameters
+##############################################################################################################################
+##### 2. Parameters that can/have to be changed by the user 
 workingPATH="/Users/adelaideroguet/Desktop/test_AnimalPlate/"  	# Path to the parent directory. It is not the directory where are stored the fastqs. Should finish by "/"
-fastq_directory="fastq_directory"				# Name of the folder containing the fastqs. It must be located in the parent directory.
-output_file="output_file.fa"					# Name of the output fasta
-region="V4V5"							# 16S rRNA gene region targeted V4V5 or V6
-removeCharacter="_L001"						# Any character you want to delete between the Sample ID and the R1/R2 characters. Example: SampleID_L001_R1_blablabla.fastq.gz
-R1="_R1"							# How are written the R1 character in the filename: _R1? _R1_?
-R2="_R2"							# How are written the R2 character in the filename: _R2? _R2_?
+fastq_directory="fastq"		# Name of the folder containing the fastqs. It must be located in the parent directory.
+output_file="test_PU.fa"	# Name of the output fasta
+region="V6"					# 16S rRNA gene region targeted V4V5 or V6
+removeCharacter=""			# OPTTIONAL: Any character you want to delete between the Sample ID and the R1/R2 characters. Example: removeCharacter="_L001" for SampleID_L001_R1_blablabla.fastq.gz
+R1="_R1"					# How can we discriminate R1 in the filename? _R1? _R1_?
+R2="_R2"					# How can we discriminate R2 in the filename? _R2? _R2_?
 
-threads=2							# Number of threads to use
-##############################################################################################################
+threads=2					# Number of threads to use
+
+
+# Warnings: R1 and R2 in your file must be frame by an underscore, if it is not the case, please ajust the line 65 to make the script fit your data. 
+# 			Make sure that "_R1_" and "_R2_" are only present in the filenames to destinguish the R1 and R2 fastqs (and not part of the sample name).
+##############################################################################################################################
+##############################################################################################################################
+##############################################################################################################################
+
+
+##############################################################################################################################
+###### AFTER THAT LINE, YOU DON'T HAVE TO MODIFY ANYTHING!!!##################################################################
+##############################################################################################################################
 
 
 
