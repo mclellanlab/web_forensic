@@ -26,96 +26,104 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
 
-                <h4><b>What are the sources that can be predicted?</b></h4>
-<p>To date, FORENSIC holds the fecal signatures of 8 sources for the V6 and V4V5 regions of the 16S rRNA gene. It includes the cat, dog, pet (= cat + dog), cow, deer, ruminant (= cow + deer), pig, sewage.</p>
-
-<h4><b>What is a classifier?</b></h4>
-<p>A classifier lists the sequences and their relative abundance that constitute the fecal signature of a given source.</p>
-
-<h4><b>I already processed my sequences using dada2, should I re-process everything using CUTADAPT and PEAR?</b></h4>
-<p>Preliminary explorations showed that FORENSIC could not correctly identify the bacterial signatures in tested samples using data processed by dada2. This incompatibility might originate from the fact that dada2 may shorten sequences of a nucleotide during the denoising step. This is not an issue when studying the whole bacterial community, but since FORENSIC is looking for the exact sequence matches between the signatures and the sample to test, predictions can be significantly altered. </p>
-
-<h4><b>Can I use data generated using another sequencing platform than Illumina?</b></h4>
-<p>We only validated the predictions using Illumina sequence data. We would be pleased to test FORENSIC using other technologies, such as minION.</p>
-
-<h4><b>FORENSIC tests automatically for multiples sources, is it possible to test samples for a specific classifier?</b></h4>
-<p>The classifiers and the associated predictions are independent. The prediction of one classifier does not influence the predictions of the other classifiers.  In other words, identifying the sewage signature in a sample does not weaken the probability to detect the cow signature in that same sample.</p>
-
-<h4><b>The source I would like to target is not in FORENSIC?</b></h4>
-<p>If you have enough representative samples, we could implement this source in FORENSIC. Let's talk about it.</p>
-
-<h4><b>How long should last an analysis?</b></h4>
-<p>The analysis should take a few minutes, depending on the size of your fasta: If it takes longer than that, feel free to contact us.</p>
-
-
+<h4><b>V6 classifiers (.v0)</b></h4>
+<br>
+<p>Fecal signatures were characterized in <b>8 sources</b> including: human (sewage), cat, dog, pet (cat+dog), cow, deer, ruminant (cow+deer) and pig.</p>
+<p>Attributes of the classifiers, i.e. number of amplicon sequence variants (ASVs) per classifier and the associated out-of-bag (OOB) error rate, are summarized in the table below.</p>
 <table class="table">
 <thead>
 <tr>
-    <th>header</th>
-    <th>header</th>
-    <th>header</th>
-    <th>header</th>
-    <th>header</th>
-</tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+<tr>
+    <th>V6 - classifiers</th>
+    <th>Bacteroidales</th>
+    <th></th>
+    <th>Clostridiales</th>
+    <th></th>
+<tr>
+    <th>Animal</th>
+    <th>#ASVs in classifier</th>
+    <th>OOB error rate</th>
+    <th>#ASVs in classifier</th>
+    <th>OOB error rate</th>
+<tr>
 </thead>
 <tbody>
-<tr>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
+ <tr>
+    <td>dog</td>
+    <td>36</td>
+    <td>2.68</td>
+    <td>77</td>
+    <td>4.46</td>
 </tr>
 <tr>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
+    <td>cat</td>
+    <td>54</td>
+    <td>9.32</td>
+    <td>40</td>
+    <td>4.46</td>
 </tr>
 <tr>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
+    <td>dog</td>
+    <td>36</td>
+    <td>2.68</td>
+    <td>77</td>
+    <td>4.46</td>
 </tr>
 <tr>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
+    <td>pet</td>
+    <td>53</td>
+    <td>1.79</td>
+    <td>84</td>
+    <td>0</td>
 </tr>
 <tr>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
+    <td>cow</td>
+    <td>68</td>
+    <td>2.68</td>
+    <td>46</td>
+    <td>2.68</td>
 </tr>
 <tr>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
+    <td>deer</td>
+    <td>45</td>
+    <td>1.79</td>
+    <td>42</td>
+    <td>0.89</td>
 </tr>
 <tr>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
+    <td>ruminant</td>
+    <td>44</td>
+    <td>1.79</td>
+    <td>42</td>
+    <td>0.89</td>
 </tr>
 <tr>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
-    <td>cell</td>
+    <td>pig</td>
+    <td>75</td>
+    <td>0</td>
+    <td>83</td>
+    <td>0</td>
+</tr>
+<tr>
+    <td>sewage</td>
+    <td>89</td>
+    <td>0</td>
+    <td>90</td>
+    <td>0</td>
 </tr>
 </tbody>
+    <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
 </table>
 <!-- DivTable.com -->
 
