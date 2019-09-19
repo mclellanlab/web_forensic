@@ -24,6 +24,11 @@ def faq():
     return render_template('faq.html')    
 
 
+@app.route('/classifier')
+def classifier():
+    return render_template('classifier.html')    
+
+
 @app.route('/newtask', methods = ['POST'])
 def start_new_task():
    if request.method == 'POST':
