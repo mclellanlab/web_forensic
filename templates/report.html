@@ -240,23 +240,6 @@
                             </div>
                           </div>
                         </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">Bray-Curtis Analysis</div>
-                            <div class="panel-body">
-                                <center>
-                                    <div id='heatmap'></div>
-                                </center>
-                                <div class="clearfix"></div>
-                                <button onclick="$('#legend2').toggle();" class="btn btn-info" style="margin-bottom: 10px;">Show Info</button>
-                                <div id="legend2" class="panel panel-default" style="display: none; text-align: justify;">
-                                    <div class="panel-body">
-                                        <p>Bray−Curtis dissimilarity indices between the submitted samples and the representative classifier signatures.</p>
-					    <p>For this analysis, the relative abundances of all the samples of a given source (used to train the classifiers) have been averaged to obtain the representative classifier signatures.
-					    <br> WARNING: This visual tool does not substitute to random forest predictions, i.e., the bacterial assemblage within a sample can be more similar to the source X (not identified by random forest) than the source Y (identified by random forest) without calling into question the random forest predictions, especially for the sources where a few ASVs were recovered in the tested sample. </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 {% else %}
