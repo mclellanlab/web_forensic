@@ -1,0 +1,6 @@
+sewage
+dog
+cattle
+deer
+pig
+ruminant
