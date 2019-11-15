@@ -49,7 +49,13 @@ for (y in 1:length(bacterial_groups)) {
         colname.notinuserdataset<-which(colnames(predata.user.1) %!in% names.seq.gini)
         predata.user.2<-matrix(data = 0, nrow = nrow(pre.user.1),  ncol = length(colname.notinuserdataset))
         colnames(predata.user.2)<-colname.notinuserdataset; row.names(predata.user.2)<-row.names(predata.user.1)
-        predata.user.3<-cbind(predata.user.1, predata.user.2)
+        if(ncol(pre.user)==1){
+            predata.user.1.1<-as.data.frame(t(predata.user.1))
+            predata.user.3<-cbind(predata.user.1.1, predata.user.2)
+            row.names(predata.user.3)<-names(pre.user)
+            }else{
+                predata.user.3<-cbind(predata.user.1, predata.user.2)
+        }
         predata.user.4<-sweep(predata.user.3, 1, rowSums(predata.user.3), '/')
         data.user<-replace(predata.user.4, is.na(predata.user.4),0)
 
