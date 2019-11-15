@@ -28,8 +28,8 @@
 
 <h4><b>V6 classifiers (.v0)</b></h4>
 <br>
-<p>Fecal signatures were characterized in <b>8 sources</b> including: human (sewage), cat, dog, pet (cat+dog), cow, deer, ruminant (cow+deer) and pig.</p>
-<p>Attributes of the classifiers, i.e. number of amplicon sequence variants (ASVs) per classifier and the associated out-of-bag (OOB) error rate, are summarized in the table below.</p>
+<p>Fecal signatures were characterized in <b>6 sources</b> including: human (sewage), dog, cow, deer, pig and herbivore (created from cow and deer samples).</p>
+<p>Attributes of the classifiers are summarized in the table below. Sequences included in the classifiers are listed <a href="{{ url_for('static', filename='data/data_v6_v0/Classifiers_details_v6_v0.txt') }}">here</a>, and the individual predictions are detailed <a href="{{ url_for('static', filename='data/data_v6_v0/IndividualPredictions_v6_v0.xlxsfa.7z') }}">here</a>. </p>
 <table class="table">
 <thead>
 <tr>
@@ -38,93 +38,227 @@
     <th></th>
     <th></th>
     <th></th>
-<tr>
-    <th>V6 - classifiers</th>
-    <th>Bacteroidales</th>
     <th></th>
-    <th>Clostridiales</th>
     <th></th>
 <tr>
-    <th>Animal</th>
-    <th>#ASVs in classifier</th>
-    <th>OOB error rate</th>
-    <th>#ASVs in classifier</th>
-    <th>OOB error rate</th>
+    <th>V6 - Bacteroidales</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+<tr>
+    <th></th>
+    <th>human (sewage)</th>
+    <th>dog</th>
+    <th>cattle</th>
+    <th>deer</th>
+    <th>pig</th>
+    <th>herbivore</th>
+<tr>
+    <td>#ASVs in classifier</td>
+    <td>107</td>
+    <td>40</td>
+    <td>42</td>
+    <td>49</td>
+    <td>79</td>
+    <td>52</td>
 <tr>
 </thead>
 <tbody>
- <tr>
-    <td>dog</td>
-    <td>36</td>
-    <td>2.68</td>
-    <td>77</td>
-    <td>4.46</td>
-</tr>
 <tr>
-    <td>cat</td>
-    <td>54</td>
-    <td>9.32</td>
-    <td>40</td>
-    <td>4.46</td>
-</tr>
-<tr>
-    <td>dog</td>
-    <td>36</td>
-    <td>2.68</td>
-    <td>77</td>
-    <td>4.46</td>
-</tr>
-<tr>
-    <td>pet</td>
-    <td>53</td>
-    <td>1.79</td>
-    <td>84</td>
+    <td>TP</td>
+    <td>9</td>
+    <td>16</td>
+    <td>37</td>
     <td>0</td>
+    <td>26</td>
+    <td>93</td>
 </tr>
 <tr>
-    <td>cow</td>
-    <td>68</td>
-    <td>2.68</td>
-    <td>46</td>
-    <td>2.68</td>
-</tr>
-<tr>
-    <td>deer</td>
-    <td>45</td>
-    <td>1.79</td>
-    <td>42</td>
-    <td>0.89</td>
-</tr>
-<tr>
-    <td>ruminant</td>
-    <td>44</td>
-    <td>1.79</td>
-    <td>42</td>
-    <td>0.89</td>
-</tr>
-<tr>
-    <td>pig</td>
-    <td>75</td>
+    <td>FN</td>
     <td>0</td>
+    <td>15</td>
+    <td>11</td>
+    <td>13</td>
+    <td>9</td>
+    <td>14</td>
+</tr>
+<tr>
+    <td>TN</td>
+    <td>262</td>
+    <td>239</td>
+    <td>185</td>
+    <td>249</td>
+    <td>236</td>
+    <td>127</td>
+</tr>
+<tr>
+    <td>FP</td>
+    <td>0</td>
+    <td>1</td>
+    <td>38</td>
+    <td>9</td>
+    <td>0</td>
+    <td>37</td>
+</tr>
+</tbody>
+    <td>Specificity</td>
+    <td>100</td>
+    <td>100</td>
     <td>83</td>
-    <td>0</td>
-</tr>
+    <td>97</td>
+    <td>74</td>
+    <td>87</td>
 <tr>
-    <td>sewage</td>
-    <td>89</td>
+    <td>Sensitivity</td>
+    <td>100</td>
+    <td>52</td>
+    <td>77</td>
     <td>0</td>
-    <td>90</td>
-    <td>0</td>
+    <td>100</td>
+    <td>77</td>
 </tr>
 </tbody>
     <tr>
+    <td>Classifier type</td>
+    <td>Universal</td>
+    <td>Draft</td>
+    <td>Universal</td>
+    <td>Excluded</td>
+    <td>Draft</td>
+    <td>Universal</td>
+</tr>
+</tbody>
+    <td></td>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
     <td></td>
 </tr>
+</tbody>
 </table>
+
+
+
+
+
+<table class="table">
+<thead>
+<tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+<tr>
+    <th>V6 - Clostridiales</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+<tr>
+    <th></th>
+    <th>human (sewage)</th>
+    <th>dog</th>
+    <th>cattle</th>
+    <th>deer</th>
+    <th>pig</th>
+    <th>herbivore</th>
+<tr>
+    <td>#ASVs in classifier</td>
+    <td>139</td>
+    <td>92</td>
+    <td>44</td>
+    <td>52</td>
+    <td>97</td>
+    <td>41</td>
+<tr>
+</thead>
+<tbody>
+<tr>
+    <td>TP</td>
+    <td>9</td>
+    <td>29</td>
+    <td>39</td>
+    <td>12</td>
+    <td>31</td>
+    <td>86</td>
+</tr>
+<tr>
+    <td>FN</td>
+    <td>0</td>
+    <td>2</td>
+    <td>9</td>
+    <td>1</td>
+    <td>3</td>
+    <td>21</td>
+</tr>
+<tr>
+    <td>TN</td>
+    <td>260</td>
+    <td>218</td>
+    <td>188</td>
+    <td>244</td>
+    <td>235</td>
+    <td>145</td>
+</tr>
+<tr>
+    <td>FP</td>
+    <td>0</td>
+    <td>20</td>
+    <td>33</td>
+    <td>12</td>
+    <td>0</td>
+    <td>17</td>
+</tr>
+</tbody>
+    <td>Specificity</td>
+    <td>100</td>
+    <td>92</td>
+    <td>85</td>
+    <td>95</td>
+    <td>100</td>
+    <td>90</td>
+<tr>
+    <td>Sensitivity</td>
+    <td>100</td>
+    <td>94</td>
+    <td>81</td>
+    <td>92</td>
+    <td>91</td>
+    <td>80</td>
+</tr>
+</tbody>
+    <tr>
+    <td>Classifier type</td>
+    <td>Universal</td>
+    <td>Universal</td>
+    <td>Universal</td>
+    <td>Universal</td>
+    <td>Universal</td>
+    <td>Universal</td>
+</tr>
+</tbody>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+</tr>
+</tbody>
+</table>
+<p> Abbreviations: TP: true positive (sample correctly classified), FN: false negative (sample not classified as expected), TN: true negative (sample should not be classified, that is should be classified as “unknown”),  FP: false positive (sample classified while it was not expected). Specificity is the number of TNs divided by the sum of TNs and FPs. Sensitivity is the number of TPs divided by the sum of TPs and FNs. </p>
+
 <!-- DivTable.com -->
 
 
