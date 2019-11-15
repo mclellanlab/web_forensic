@@ -52,47 +52,11 @@ for (y in 1:length(bacterial_groups)) {
 
 
     ###############################################################################################
-    # Estimation of the proportions for all animal except Pet and Ruminant
-
-    ## Select only sequences in the classifiers (except Pet and Ruminant)
-    gini.notPetRuminant<-subset(gini, Type!="pet" & Type!="ruminant")
-    data.notPetRuminant.gini<-subset(predata, rownames(predata) %in% gini.notPetRuminant$SequenceID)
-    data.notPetRuminant.gini.ra<-sweep(data.notPetRuminant.gini, 2, colSums(data.notPetRuminant.gini), '/')
-    data.notPetRuminant.gini.ra<-replace(data.notPetRuminant.gini.ra, is.na(data.notPetRuminant.gini.ra),0)
-    apply(data.notPetRuminant.gini.ra, 2, sum)
-    data.notPetRuminant.gini.ra.seqID<-cbind(row.names(data.notPetRuminant.gini.ra), data.notPetRuminant.gini.ra); names(data.notPetRuminant.gini.ra.seqID)[1]<-"SequenceID"
-    ## Merge gini and relative abundance of the sequences used in the classifiers
-    data.notPetRuminant.merged<-merge(gini.notPetRuminant, data.notPetRuminant.gini.ra.seqID, by=c("SequenceID","SequenceID"))[,-1]
-    # Prepare the output
-    preresults.notPetRuminant<-aggregate(. ~ Type, data.notPetRuminant.merged, sum)
-    results.notPetRuminant<-as.data.frame(t(preresults.notPetRuminant[,-1]))*100
-    names(results.notPetRuminant)<-as.character(preresults.notPetRuminant[,1])
-
-
-
-    ###############################################################################################
-    # Estimation of the proportions for all animal except Cat, Dog, Cow and Deer
-
-    ## Select only sequences in the classifiers (except Cat, Dog, Cow and Deer)
-    gini.notCatDogCowDeer<-subset(gini, Type!="cat" & Type!="dog" & Type!="cow" & Type!="deer")
-    data.notCatDogCowDeer.gini<-subset(predata, rownames(predata) %in% gini.notCatDogCowDeer$SequenceID)
-    data.notCatDogCowDeer.gini.ra<-sweep(data.notCatDogCowDeer.gini, 2, colSums(data.notCatDogCowDeer.gini), '/')
-    data.notCatDogCowDeer.gini.ra<-replace(data.notCatDogCowDeer.gini.ra, is.na(data.notCatDogCowDeer.gini.ra),0)
-    apply(data.notCatDogCowDeer.gini.ra, 2, sum)
-    data.notCatDogCowDeer.gini.ra.seqID<-cbind(row.names(data.notCatDogCowDeer.gini.ra), data.notCatDogCowDeer.gini.ra); names(data.notCatDogCowDeer.gini.ra.seqID)[1]<-"SequenceID"
-    ## Merge gini and relative abundance of the sequences used in the classifiers
-    data.notCatDogCowDeer.merged<-merge(gini.notCatDogCowDeer, data.notCatDogCowDeer.gini.ra.seqID, by=c("SequenceID","SequenceID"))[,-1]
-    # Prepare the output
-    preresults.notCatDogCowDeer<-aggregate(. ~ Type, data.notCatDogCowDeer.merged, sum)
-    results.notCatDogCowDeer<-as.data.frame(t(preresults.notCatDogCowDeer[,-1]))*100
-    names(results.notCatDogCowDeer)<-as.character(preresults.notCatDogCowDeer[,1])
-
-
-
-    ###############################################################################################
-    # Estimation of the proportions for all sources
-    source("data/data_v6/function.R")
-    
+    # Estimation of the proportions for all animal-sources classifier within the user samples. 
+    pred.sum<-aggregate(. ~ Source, pred.ra[,-1], sum)
+    row.names(pred.sum)<-pred.sum$Source
+    pred.sum<-cbind(pred.sum$Source, (pred.sum[,-1])*100)
+    names(pred.sum)[1]<-"Source"
 
 
 
@@ -110,7 +74,7 @@ for (z in 1:length(names(predata))) {
         ASV.data<-pred.ra[,c("ASV", "Source", Sample)]
         ASV.data[,3]<-round(ASV.data[,3]*100, 2)
 
-        Source.data<-pred.mean[,c("Source", Sample)]
+        Source.data<-pred.sum[,c("Source", Sample)]
         data<-as.data.frame(predata[,c(Sample)])
 
         names(ASV.data)<-c("ASV", "Source", "RelativeAbundance")
