@@ -129,7 +129,7 @@ def main(task_path, task_id, region):
         f.write(region)
 
     log = ""
-    for script_path in ['R_scripts/1_RandomForest_UserDataset.R', 'R_scripts/2_Estimations_SourcesContribution.R', 'R_scripts/3_BrayCurtis.R']:
+    for script_path in ['R_scripts/1_RandomForest_UserDataset.R', 'R_scripts/2_Estimations_SourcesContribution.R']:
         counts_table = outfile
         report_file = os.path.join(os.path.dirname(outfile), 'report')
         command = ['Rscript', script_path, counts_table, report_file, region]
