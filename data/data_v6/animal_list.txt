@@ -1,8 +1,6 @@
-cat
-dog
-pet
-cow
-deer
-ruminant
-pig
 sewage
+dog
+cattle
+deer
+pig
+herbivore
