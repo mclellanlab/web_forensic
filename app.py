@@ -8,6 +8,7 @@ import timeago
 import subprocess
 import pandas as pd
 
+from datetime import datetime
 from flask import Flask, render_template, request, jsonify, redirect, abort, send_file
 from werkzeug import secure_filename
 
@@ -72,6 +73,7 @@ def show_task_result(task_id):
     if os.path.exists(task_path):
         data['exists'] = True
         data['task_id'] = str(task_id)
+        data['submitted_date'] = datetime.utcfromtimestamp(os.path.getctime(task_path)).strftime('%b %d, %Y')
         data['email'] = open(os.path.join(task_path, "email"), 'r').read()
         data['sample_names'] = open(os.path.join(task_path, "counts_table.txt"), 'r').readline().strip().split('\t')
         data['reads_per_sample'] = pd.read_csv(os.path.join(task_path, "reads_per_sample.txt"), sep='\t', index_col='sample_name').to_dict()['reads']
