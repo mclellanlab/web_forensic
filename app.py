@@ -1,12 +1,14 @@
 import os
+import io
 import sys
 import time
 import random
+import zipfile
 import timeago
 import subprocess
 import pandas as pd
 
-from flask import Flask, render_template, request, jsonify, redirect, abort
+from flask import Flask, render_template, request, jsonify, redirect, abort, send_file
 from werkzeug import secure_filename
 
 app = Flask(__name__)
@@ -92,6 +94,20 @@ def show_task_result(task_id):
             data['successful'] = False
 
     return render_template('report.html', data=data)
+
+
+@app.route('/result/<int:task_id>/download')
+def download_result(task_id):
+    task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
+    zip_buffer = io.BytesIO()
+    with zipfile.ZipFile(zip_buffer, 'w') as zf:
+        for root, dirs, files in os.walk(task_path):
+            for file in files:
+                zf.write(os.path.join(root, file), os.path.relpath(os.path.join(root, file), os.path.join(task_path, '..')))
+
+    zip_buffer.seek(0)
+    return send_file(zip_buffer, attachment_filename='forensic_%s.zip' % str(task_id), as_attachment=True)
+
 
 @app.route('/bubbleplot_data/<int:task_id>/<sample>')
 def return_bubbleplot_data(task_id, sample):
