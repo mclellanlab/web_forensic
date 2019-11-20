@@ -1,0 +1,7 @@
+dog
+cattle
+deer
+ruminant
+herbivore
+pig
+sewage
