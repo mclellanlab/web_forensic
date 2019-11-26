@@ -44,8 +44,8 @@ elif [[ $region == "V4" ]]
 then
 	primerF="CCAGCAGCYGCGGTAAN"
 	primerR="GGACTACNVGGGTWTCTAATCC"
-	minlength=230	
-	maxlength=270
+	minlength=227	
+	maxlength=279
 fi
 
 
