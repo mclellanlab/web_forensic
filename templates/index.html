@@ -44,7 +44,7 @@
                                         </div>
                                     </div>
                                     <div class="alert alert-info" style="padding: 5px; font-size: 13px;">
-                                        <strong>Info!</strong> Headers have to contain the sample ID and the sequence ID separated by a vertical bar: <code>>SampleID|SequenceID</code>
+                                        <strong>Info!</strong> Headers have to contain the sample ID and the sequence ID separated by a vertical bar: <code>>SampleID|SequenceID</code>, and the first caracter of the sample ID must be a letter: <code>>sample08|seq1 not >08sample|seq1</code> 
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="email">E-mail</label>
@@ -94,8 +94,10 @@
                          <span class="li-dot"> 2 </span>
                          <p style="padding-left: 25px;">Reads must be trimmed using <a href="https://cutadapt.readthedocs.io/en/stable/guide.html">CUTADAPT</a> and merged using <a href="https://sco.h-its.org/exelixis/web/software/pear/">PEAR</a> according to the V4 or V6 workflow (<a href="{{ url_for('static', filename='data/TrimMerge_v1.3.sh') }}">bash </a> or <a href="{{ url_for('static', filename='data/TrimMerge_v1.3.txt') }}">text</a> version). Warning: some parameters have to be set manually before being used as an automated script. This workflow will generate one fasta file containing your different samples.</p>
                          <span class="li-dot"> 3 </span>
-                         <p style="padding-left: 25px;">FORENSIC supports only fasta files (not compressed). A header line is REQUIRED and consists of the sampleID and the sequence ID separated by a vertical bar "|" (if you followed the workflow above, you are good to go):<br>
-                            >sampleID|sequenceID (example: >BeachSample1|D4ZHLFP1-44-D15PUACXX-2-1101-1236-2324)
+                         <p style="padding-left: 25px;">FORENSIC supports only fasta files (not compressed). A header line is REQUIRED and consists of the sampleID and the sequence ID separated by a vertical bar "
+                             " (if you followed the workflow above, you are good to go):<br>
+                            >sampleID|sequenceID (example: >BeachSample1|D4ZHLFP1-44-D15PUACXX-2-1101-1236-2324)<br>
+                             SampleID have to start with a non-numeric character.
                             <br> <br>
                             An example, representing the Bacteroidales and Clostridiales assemblage environmental and/or sewage samples (described in Roguet et al. in preparation), is downloadable <a href="{{ url_for('static', filename='data/test_v6_MKE.fa.gz') }}">V6</a> or <a href="{{ url_for('static', filename='data/test_v4.fa.gz') }}">V4</a>. </p>
                     <br>
