@@ -63,6 +63,8 @@ for (y in 1:length(bacterial_groups)) {
         #prediction prob
         prediction.p<-as.data.frame(predict(fit, data.user, "prob"))
         pred.withzero.prob[, c(x)]<-prediction.p[, as.character(Animal)]*100
+        pred.withzero.prob[which(apply(data.user, 1, sum)==0)]<-0 #set prediction to zero if no ASV was found in the sample for a given classifier
+
         pred.names[x]<-as.character(Animal)
         #prediction response
         pred.withzero.prob.dataframe<-as.data.frame(pred.withzero.prob[, c(x)])
