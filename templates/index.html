@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label class="control-label" for="name">Fasta file</label>
                                         <div class="input-group">
-                                            <input type="text" class="form-control fileUploadTxt input-sm" readonly="" value="Fasta file (not compressed)">
+                                            <input type="text" class="form-control fileUploadTxt input-sm" id="filenameField" readonly="" value="Fasta file (not compressed)">
                                             <label class="input-group-btn">
                                                 <span class="btn btn-primary btn-sm">
                                                     Browse… <input type="file" style="display: none;" id="file" name="file">
@@ -173,6 +173,10 @@
           'resizeDuration': 200,
           'wrapAround': true
         });
+        let fileObj = document.getElementById('file');
+        fileObj.onchange = function() {
+            document.getElemenyById('filenameField').value = fileObj.files.item(0).name;
+        }
     </script>
     </body>
 </html>
