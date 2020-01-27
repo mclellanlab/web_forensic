@@ -166,7 +166,7 @@
                                             <span class="glyphicon glyphicon-exclamation-sign"></span></a>
                                             {% endif %}
 				      
-                                            {% if data[classifier + '_samples_unique_count'][sample] < 100 % || data[classifier + '_samples_unique_count'][sample] > 0 %}
+                                            {% if data[classifier + '_samples_unique_count'][sample] < 100 || data[classifier + '_samples_unique_count'][sample] > 0 %}
                                             <a href="#" data-toggle="tooltip" title="Too few sequences in your sample matching to the classifiers, it can affect the predictions.">
                                             <span class="glyphicon glyphicon-exclamation-sign"></span></a>
                                             {% endif %}
