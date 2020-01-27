@@ -53,7 +53,7 @@ def start_new_task():
         return redirect('/task/' + str(task_id))
 
 
-@app.route('/task/<int:task_id>')
+@app.route('/task/<task_id>')
 def task_status(task_id):
     task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
 
@@ -64,7 +64,7 @@ def task_status(task_id):
         return render_template('processing.html', started_message=timeago.format(os.path.getctime(task_path), locale='en_US'), email=email)
 
 
-@app.route('/result/<int:task_id>')
+@app.route('/result/<task_id>')
 def show_task_result(task_id):
     task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
     
@@ -98,7 +98,7 @@ def show_task_result(task_id):
     return render_template('report.html', data=data)
 
 
-@app.route('/result/<int:task_id>/download')
+@app.route('/result/<task_id>/download')
 def download_result(task_id):
     task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
     zip_buffer = io.BytesIO()
@@ -111,7 +111,7 @@ def download_result(task_id):
     return send_file(zip_buffer, attachment_filename='forensic_%s.zip' % str(task_id), as_attachment=True)
 
 
-@app.route('/bubbleplot_data/<int:task_id>/<sample>')
+@app.route('/bubbleplot_data/<task_id>/<sample>')
 def return_bubbleplot_data(task_id, sample):
     task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
     bubbleplot = os.path.join(task_path, 'report_bubbleplot', '%s.csv' % sample)
@@ -123,7 +123,7 @@ def return_bubbleplot_data(task_id, sample):
     abort(404)
 
 
-@app.route('/heatmap_data/<int:task_id>')
+@app.route('/heatmap_data/<task_id>')
 def return_heatmap_data(task_id):
     task_path = os.path.join(TASKS_BASE_PATH, str(task_id))
     
