@@ -162,7 +162,7 @@
                                             {{ data[classifier + '_samples_sums'][sample] }} ({{ data[classifier + '_samples_unique_count'][sample] }})
                                             
 					    {% if data[classifier + '_samples_unique_count'][sample] == 0 %}							  
-                                            <a href="#" data-toggle="tooltip" title="No sequence were matchning the classifier, did you encounter issues during the trimming step? Is the sequencing depth enought?">
+                                            <a href="#" data-toggle="tooltip" title="No sequence was matchning the classifier. Did you encounter issues during the trimming step? Was the sequencing depth enough?">
                                             <span class="glyphicon glyphicon-exclamation-sign"></span></a>
                                             {% endif %}
 				      
