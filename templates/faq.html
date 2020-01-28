@@ -27,31 +27,41 @@
             <div class="col-md-10">
 
                 <h4><b>What are the sources included in FORENSIC?</b></h4>
-<p>To date, the fecal signature of 7 sources have been investigated for V4 and/or V6 regions of the 16S rRNA gene. It includes the human (sewage), dog, cow, deer (only v6) and pig source-classifiers, but also the ruminant (only v4) and/or the herbivore.</p>
+                <p>To date, the fecal signature of 7 sources have been investigated for V4 and/or V6 regions of the 16S rRNA gene. It includes the human (sewage), dog, cow, deer (only v6) and pig source-classifiers, but also the ruminant (only v4) and/or the herbivore. </p>
 
-<h4><b>What is a classifier?</b></h4>
-<p>A classifier contains the information of the fecal signature structure for a given source, i.e., the sequences and their relative abundance. The classifiers were created from 15-20 samples per source using sequences assigned to Bacteroidales or Clostridiales. More information about the classifiers can be found <a href="https://forensic.sfs.uwm.edu/classifier">here</a>.</p>
+                <h4><b>The source I would like to target is not in FORENSIC?</b></h4>
+                <p>If you have enough representative samples, we could implement this source in FORENSIC. Let's talk about it.</p>
 
-<h4><b>What is the difference between the global and draft classifiers?</b></h4>
-<p>We tested the specificity (i.e., the proportion of negative samples that are correctly classified as such) and sensitivity (i.e., proportion of positive samples that are classified as such) of each classifier using the sewage and animal fecal samples from multiple sources and geographic location across the world. Universal classifiers had a specificity and sensitivity higher than 70%, while draft classifiers had one of the parameter ranging from 50 to 70%. </p>
 
-<h4><b>Why focus on Bacteroidales and Clostridiales bacterial orders?</b></h4>
-<p>Bacteroidales and Clostridiales are considered to be fecal-associated bacteria. Targeting these bacterial orders reduces the "noise" caused by environmental-associated bacteria. Moreover, Bacteroidales and Clostridiales are one of the predominant bacterial group in mammals gut microbiota, their detection in environmental samples is therefore more likely. Last but not least, we consistently observe reliable patterns discriminating the different sources we investigated, reflecting the host diet, physiology, etc. of the host. </p>
+                <h4><b>What is a classifier?</b></h4>
+                <p>A classifier contains the information of the fecal signature structure for a given source, i.e., the sequences and their relative abundance. The classifiers were created from 15-20 samples per source using sequences assigned to Bacteroidales or Clostridiales. More information about the classifiers can be found <a href="https://forensic.sfs.uwm.edu/classifier">here</a>.</p>
 
-<h4><b>I already processed my sequences using dada2, should I re-process everything using CUTADAPT and PEAR?</b></h4>
-<p>Preliminary explorations showed that FORENSIC could not correctly identify the bacterial signatures in tested samples using data processed by dada2. This incompatibility might originate from the fact that dada2 may shorten sequences of a nucleotide during the denoising step. This is not an issue when studying the whole bacterial community, but since FORENSIC is looking for the exact sequence matches between the signatures and the sample to test, predictions can be significantly altered. </p>
 
-<h4><b>Can I use data generated using another sequencing platform than Illumina?</b></h4>
-<p>We only validated the predictions using Illumina sequence data. We would be pleased to test FORENSIC using other technologies, such as minION.</p>
+                <h4><b>What is the difference between global and draft classifiers?</b></h4>
+                <p>We optimized the decision cut-off for each classifier to maximize their specificity (i.e., the proportion of negative samples correctly classified) and sensitivity (i.e., proportion of positive samples correctly classified) with minimum of percentgages of 70%. Because the performance of the classifiers was evaluated using fecal samples, we considered the classifiers with a prediction-cutoff <10% could generate too many misclassification when testing environmental samples. So, classifiers with a decision cut-off ≥10% were considered as global, while classifiers that did not meet this criterion were either discarded (decision cut-off <5%) or categorized as draft (decision cut-off <10%). </p>
+
+
+                <h4><b>Why focus on Bacteroidales and Clostridiales bacterial orders?</b></h4>
+                <p>Bacteroidales and Clostridiales are considered to be fecal-associated bacteria. Targeting these bacterial orders reduces the "noise" caused by environmental-associated bacteria. Moreover, Bacteroidales and Clostridiales are one of the predominant bacterial group in mammals gut microbiota, their detection in environmental samples is therefore more likely. Last but not least, we consistently observe reliable patterns discriminating the different sources we investigated, reflecting the host diet, physiology, etc. of the host. </p>
+
+                <h4><b>My samples have a sequencing depth below the recommendations, can I still use FORENSIC?</b></h4>
+                <p>Yes! However, depending on how shallow was the sequencing, it is likely that the fecal signature recovered from your samples will never be classified as "fecal signal detected (contaminated)". We evaluated that a sample with a fecal signature (i.e., matching the ASVs in the classifiers) represented by at least ~100 sequences is enough to generate accurate classifications.</p>
+
+
+                <h4><b>I already processed my sequences using dada2, should I re-process everything using CUTADAPT and PEAR?</b></h4>
+                <p>Preliminary explorations showed that FORENSIC could not correctly identify the bacterial signatures in tested samples using data processed by dada2. This incompatibility might originate from the fact that dada2 may shorten sequences of a nucleotide during the denoising step. This is not an issue when studying the whole bacterial community, but since FORENSIC is looking for the exact sequence matches between the signatures and the sample to test, predictions can be significantly altered. </p>
+
+
+                <h4><b>Can I use data generated using another sequencing platform than Illumina?</b></h4>
+                <p>We only validated the predictions using Illumina sequence data. We would be pleased to test FORENSIC using other technologies, such as minION.</p>
                
-<h4><b>FORENSIC tests automatically for multiples sources, is it possible to test samples for a specific classifier?</b></h4>
-<p>The classifiers and the associated predictions are independent. The prediction of one classifier does not influence the predictions of the other classifiers.  In other words, identifying the sewage signature in a sample does not weaken the probability to detect the cow signature in that same sample.</p>
 
-<h4><b>The source I would like to target is not in FORENSIC?</b></h4>
-<p>If you have enough representative samples, we could implement this source in FORENSIC. Let's talk about it.</p>
+                <h4><b>FORENSIC tests automatically for multiples sources, is it possible to test samples for a specific classifier?</b></h4>
+                <p>The classifiers and the associated predictions are independent. The prediction of one classifier does not influence the predictions of the other classifiers.  In other words, identifying the sewage signature in a sample does not weaken the probability to detect the cow signature in that same sample.</p>
 
-<h4><b>How long should last an analysis?</b></h4>
-<p>The analysis should take a few minutes, depending on the size of your fasta: If it takes longer than that, feel free to contact us.</p>
+
+                <h4><b>How long should last an analysis?</b></h4>
+                <p>The analysis should take a few minutes, depending on the size of your fasta: If it takes longer than that, feel free to contact us.</p>
     </div>
 
             </div>
