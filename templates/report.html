@@ -142,20 +142,24 @@
                                         <td style="text-align: center">
                                             {{ classifier }}
                                         </td>
+                                        {% set classifier_animal = data[classifier][0][loop.index] %}
                                         {% for item in data[classifier][sample_loop.index][1:] %}
                                         <td style="text-align: center">
                                             <div class="chart-item" style="background-color: 
-                                            {% if item|float() < 40|float() %}
+                                            {% if item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float() %}
                                                 #ffffff
-                                            {% elif item|float() < 45|float() %}
-                                                #FEE08B
+                                            {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float()  %}
+                                                green
                                             {% elif item|float() < 50|float() %}
-                                                #D53E4F
+                                                darkgreen
                                             {% else %}
                                                 #9E0142
                                             {% endif %}
-                                            !important;"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
+                                            !important;
+
+                                            {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'draft' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
                                             </div>
+                                            
                                         </td>
                                         {% endfor %}
                                         <td style="text-align: center">
