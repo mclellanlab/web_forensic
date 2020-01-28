@@ -85,6 +85,18 @@ def show_task_result(task_id):
         Clostridiales_path = os.path.join(task_path, "report_clostridiales_predprob.txt")
         Bacteroidales_path = os.path.join(task_path, "report_bacteroidales_predprob.txt")
 
+
+        for table_name in ['classifier_type', 'cutoff_low', 'cutoff']:
+            data[table_name] = {}
+            for region in ['v4', 'v6']:
+                data[table_name][region] = {}
+                with open(os.path.join('static/data/Cutoff_Tables', table_name + "_" + region + ".txt"), "r") as table:
+                    for line in table.readlines()[1:]:
+                        clasifier_, Clos_, Bacte_ = line.strip().split()
+                        data[table_name][region][clasifier_] = {
+                            'Clostridiales': Clos_,
+                            'Bacteroidales': Bacte_
+                        }
         if os.path.exists(Clostridiales_path) and os.path.exists(Bacteroidales_path):
             data['successful'] = True
             data['region'] = open(os.path.join(task_path, "region"), 'r').read()
