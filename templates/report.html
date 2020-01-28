@@ -149,15 +149,15 @@
                                             {% if item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float() %}
                                                 #ffffff
                                             {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float()  %}
-                                                green
+                                                #D6FFE0
                                             {% elif item|float() < 50|float() %}
-                                                darkgreen
+                                                #61D836
                                             {% else %}
                                                 #9E0142
                                             {% endif %}
                                             !important;
 
-                                            {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'draft' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
+                                            {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
                                             </div>
                                             
                                         </td>
