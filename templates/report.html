@@ -166,8 +166,8 @@
                                             <span class="glyphicon glyphicon-exclamation-sign"></span></a>
                                             {% endif %}
 				      
-                                            {% if data[classifier + '_samples_unique_count'][sample] < 100 and data[classifier + '_samples_unique_count'][sample] > 0 %}
-                                            <a href="#" data-toggle="tooltip" title="Too few sequences in your sample matching to the classifiers (<100), it can affect the predictions.">
+                                            {% if data[classifier + '_samples_unique_count'][sample] < 100 and data[classifier + '_samples_unique_count'][sample] > 0 or data[classifier + '_samples_sums'][sample] < 1000 %}
+                                            <a href="#" data-toggle="tooltip" title="Too few sequences in your sample matching to the classifiers (<1,000 reads matched and/or <100 unique reads), it can affect the predictions.">
                                             <span class="glyphicon glyphicon-exclamation-sign"></span></a>
                                             {% endif %}
                                         </td>
