@@ -1,4 +1,4 @@
-classifiers	Clostridiales	Bacteroidales
+classifiers	clostridiales	bacteroidales
 sewage	global	global
 dog	global	global
 pig	global	global
