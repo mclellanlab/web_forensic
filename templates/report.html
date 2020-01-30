@@ -148,11 +148,11 @@
                                             <div class="chart-item" style="background-color: 
                                             {% if item|float() == 0|float() %}
                                                 white
-                                            {{ {% elif item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float() %} }}
+                                            {% elif item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float() %}
                                                 #DBFAD4
-                                           {{ {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float() %} }}
+                                           {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float() %}
                                                 #60D836
-					  {{  {% elif item|float() >= data['cutoff'][data.region][classifier_animal][classifier]|float() %} }}
+					   {% elif item|float() >= data['cutoff'][data.region][classifier_animal][classifier]|float() %}
                                                 purple
                                             {% else %}
                                                 black
