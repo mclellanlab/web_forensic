@@ -146,17 +146,17 @@
                                         {% for item in data[classifier][sample_loop.index][1:] %}
                                         <td style="text-align: center">
                                             <div class="chart-item" style="background-color: 
-                                            {% if item|float() == 0|float() %}
-                                                white
-					   {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float() %}
-                                                purple
+                                            {% if item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float() %}
+                                                #ffffff
+                                            {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float()  %}
+                                                #D6FFE0
+                                            {% elif item|float() < 50|float() %}
+                                                #61D836
                                             {% else %}
-                                                yellow
+                                                #9E0142
                                             {% endif %}
-					    !important;
-
-                                            {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'global' %} border: 1px solid red !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
-
+                                            !important;
+                                            {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
                                             </div>
                                             
                                         </td>
