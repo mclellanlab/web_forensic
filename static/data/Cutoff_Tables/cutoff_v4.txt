@@ -1,4 +1,4 @@
-classifiers	Bacteroidetes	Firmicutes
+classifiers	Group1	Group2
 dog	22	10
 cattle	9	16
 ruminant	5	10
