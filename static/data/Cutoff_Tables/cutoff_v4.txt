@@ -1,4 +1,4 @@
-classifiers	clostridiales	bacteroidales
+classifiers	Clostridiales	Bacteroidales
 dog	10.000	90.000
 cattle	16.000	9.000
 ruminant	10.000	5.000
