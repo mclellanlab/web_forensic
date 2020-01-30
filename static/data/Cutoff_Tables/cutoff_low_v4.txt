@@ -1,6 +1,6 @@
 classifiers	clostridiales	bacteroidales
 sewage	2	4
-dog	10  1
+dog	10  15
 pig	2	2
 cattle	1	1
 ruminant	2	1
