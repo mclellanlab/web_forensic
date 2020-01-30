@@ -1,7 +1,7 @@
 classifiers	Clostridiales	Bacteroidales
-dog	10.000	90.000
-cattle	16.000	9.000
-ruminant	10.000	5.000
-herbivore	22.000	33.000
-pig	29.000	13.000
-sewage	17.000	19.000
+dog	10	99
+cattle	16	9
+ruminant	10	5
+herbivore	22	33
+pig	29	13
+sewage	17	19
