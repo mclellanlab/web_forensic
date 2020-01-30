@@ -1,6 +1,6 @@
+sewage
 dog
+pig
 cattle
 ruminant
 herbivore
-pig
-sewage
