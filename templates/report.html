@@ -148,7 +148,7 @@
                                             <div class="chart-item" style="background-color: 
                                             {% if item|float() == 0|float() %}
                                                 white
-					   {% elif item|float() >= data['cutoff'][data.region][classifier_animal][classifier]|float() %}
+					   {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float() %}
                                                 purple
                                             {% else %}
                                                 yellow
