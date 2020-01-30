@@ -1,5 +1,5 @@
 classifiers	Bacteroidales	Clostridiales
-dog	22	10
+dog	22	0.5
 cattle	9	16
 ruminant	5	10
 herbivore	33	22
