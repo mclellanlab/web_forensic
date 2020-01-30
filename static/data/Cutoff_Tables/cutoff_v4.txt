@@ -1,4 +1,4 @@
-classifiers	Group1	Group2
+classifiers	Bacteroidales	Clostridiales
 dog	22	10
 cattle	9	16
 ruminant	5	10
