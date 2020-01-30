@@ -1,4 +1,4 @@
-classifiers	Bacteroidales	Clostridiales
+classifiers	Bacteroidetes	Firmicutes
 dog	22	10
 cattle	9	16
 ruminant	5	10
