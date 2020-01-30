@@ -48,15 +48,6 @@
         .borderless td, .borderless th {
             border-top: none !important;
         }
-	
-	.circle{
-	    height: 65px;
-	    width: 65px;
-	    border-radius: 50%;
-	    border:1px solid red;
-	    line-height: 65px;
-	    text-align: center;
-	}
 
     </style>
 </head>
@@ -202,12 +193,27 @@
                                     <table class="legend">
 
 <tr>
+		.circle{
+	    height: 65px;
+	    width: 65px;
+	    border-radius: 50%;
+	    border:1px solid b;
+	    line-height: 65px;
+	    text-align: center;
+	}
+						    
+
                                             <td rowspan="2">Fecal signature detection confidence index</td>
                                             <td>not detected</td>
                                             <td>low confidence (<80% specificity)</td>
                                             <td>low confidence (>80% specificity)</td>
                                             <td>high confidence </td>
-					    <td><div class="circle"></div></td>
+                                            <td></td>
+	 				    
+	                                    <td rowspan="2">Type of classifier</td>
+                                            <td><div class="circle"></div></td><td>global</td>
+                                            <td>draft</td>
+                                            <td>discarded</td>
                                             <td></td>
 					
 						   <div class="alert alert-info" role="alert">
