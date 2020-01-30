@@ -1,7 +1,7 @@
 classifiers	Clostridiales	Bacteroidales
-sewage	draft	global
+sewage	global	global
 dog	global	global
 pig	global	global
-cattle	global	global
+cattle	global	draft
 ruminant	global	draft
 herbivore	global	global
