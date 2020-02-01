@@ -1,4 +1,4 @@
-classifiers	bacteroidales	clostridiales
+classifiers	Bacteroidales	Clostridiales
 sewage	4	2
 dog	15	10
 pig	2	2
