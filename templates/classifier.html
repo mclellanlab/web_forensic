@@ -26,7 +26,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
 
-<h4><b>V6 classifiers (.v0)</b></h4>
+<h4><b>V6 classifiers (version v0)</b></h4>
 <br>
 <p>Fecal signatures were characterized in <b>6 sources</b> including: human (sewage), dog, cow, deer, pig and herbivore (created from cow and deer samples).</p>
 <p>Attributes of the classifiers are summarized in the table below. Sequences included in the classifiers are listed <a href="{{ url_for('static', filename='data/Classifiers_details_v6_v0.txt') }}">here</a>, and the individual predictions are detailed <a href="{{ url_for('static', filename='data/IndividualPredictions_v6_v0.xlsx') }}">here</a>. </p>
@@ -52,11 +52,12 @@
     <th></th>
     <th>human (sewage)</th>
     <th>dog</th>
-    <th>cattle</th>
-    <th>deer</th>
     <th>pig</th>
+    <th>deer</th>
+    <th>cattle</th>
     <th>herbivore</th>
 <tr>
+<tbody>
     <td>#ASVs in the classifier</td>
     <td>107</td>
     <td>40</td>
@@ -64,69 +65,80 @@
     <td>49</td>
     <td>79</td>
     <td>52</td>
+</tbody>
+<tr>
+<tbody>
+    <td>Decision cut-off</td>
+    <td>21</td>
+    <td>1</td>
+    <td>14</td>
+    <td>4</td>
+    <td>26</td>
+    <td>40</td>
+</tbody>
 <tr>
 </thead>
 <tbody>
 <tr>
     <td>TP</td>
     <td>9</td>
-    <td>16</td>
-    <td>37</td>
-    <td>0</td>
     <td>26</td>
+    <td>35</td>
+    <td>13</td>
+    <td>41</td>
     <td>94</td>
 </tr>
 <tr>
     <td>FN</td>
     <td>0</td>
-    <td>15</td>
-    <td>11</td>
-    <td>13</td>
-    <td>9</td>
+    <td>5</td>
+    <td>0</td>
+    <td>0</td>
+    <td>7</td>
     <td>14</td>
 </tr>
 <tr>
     <td>TN</td>
     <td>261</td>
-    <td>238</td>
-    <td>186</td>
-    <td>248</td>
-    <td>235</td>
+    <td>217</td>
+    <td>232</td>
+    <td>217</td>
+    <td>181</td>
     <td>127</td>
 </tr>
 <tr>
     <td>FP</td>
     <td>0</td>
-    <td>1</td>
-    <td>36</td>
-    <td>9</td>
-    <td>0</td>
+    <td>22</td>
+    <td>3</td>
+    <td>40</td>
+    <td>41</td>
     <td>35</td>
 </tr>
 </tbody>
     <td>Specificity</td>
     <td>100</td>
-    <td>100</td>
+    <td>91</td>
+    <td>99</td>
     <td>84</td>
-    <td>96</td>
-    <td>100</td>
+    <td>82</td>
     <td>78</td>
 <tr>
     <td>Sensitivity</td>
     <td>100</td>
-    <td>52</td>
-    <td>77</td>
-    <td>0</td>
-    <td>74</td>
+    <td>84</td> 
+    <td>100</td>
+    <td>100</td>
+    <td>85</td>
     <td>87</td>
 </tr>
 </tbody>
     <tr>
     <td>Classifier type</td>
     <td>Global</td>
-    <td>Draft</td>
+    <td>Discarded</td>
     <td>Global</td>
-    <td>Excluded</td>
+    <td>Discarded</td>
     <td>Global</td>
     <td>Global</td>
 </tr>
@@ -168,11 +180,12 @@
     <th></th>
     <th>human (sewage)</th>
     <th>dog</th>
-    <th>cattle</th>
-    <th>deer</th>
     <th>pig</th>
+    <th>deer</th>
+    <th>cattle</th>
     <th>herbivore</th>
 <tr>
+<tbody>
     <td>#ASVs in the classifier</td>
     <td>139</td>
     <td>92</td>
@@ -180,61 +193,72 @@
     <td>52</td>
     <td>97</td>
     <td>41</td>
+</tbody>
+<tr>
+<tbody>
+    <td>Decision cut-off</td>
+    <td>16</td>
+    <td>34</td>
+    <td>31</td>
+    <td>26</td>
+    <td>26</td>
+    <td>25</td>
+</tbody>
 <tr>
 </thead>
 <tbody>
 <tr>
     <td>TP</td>
     <td>9</td>
-    <td>29</td>
-    <td>39</td>
-    <td>12</td>
     <td>31</td>
-    <td>86</td>
+    <td>36</td>
+    <td>13</td>
+    <td>39</td>
+    <td>93</td>
 </tr>
 <tr>
     <td>FN</td>
     <td>0</td>
-    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
     <td>9</td>
-    <td>1</td>
-    <td>5</td>
-    <td>21</td>
+    <td>14</td>
 </tr>
 <tr>
     <td>TN</td>
     <td>265</td>
-    <td>223</td>
-    <td>195</td>
-    <td>249</td>
+    <td>212</td>
     <td>237</td>
-    <td>152</td>
+    <td>247</td>
+    <td>194</td>
+    <td>147</td>
 </tr>
 <tr>
     <td>FP</td>
     <td>0</td>
-    <td>20</td>
     <td>31</td>
-    <td>12</td>
     <td>1</td>
-    <td>15</td>
+    <td>14</td>
+    <td>32</td>
+    <td>20</td>
 </tr>
 </tbody>
     <td>Specificity</td>
     <td>100</td>
-    <td>92</td>
-    <td>86</td>
-    <td>95</td>
+    <td>87</td>
     <td>100</td>
-    <td>91</td>
+    <td>95</td>
+    <td>86</td>
+    <td>88</td>
 <tr>
     <td>Sensitivity</td>
     <td>100</td>
-    <td>94</td>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
     <td>81</td>
-    <td>92</td>
-    <td>86</td>
-    <td>80</td>
+    <td>87</td>
 </tr>
 </tbody>
     <tr>
@@ -265,7 +289,7 @@
 <br>
 
 
-<h4><b>V4 classifiers (.v0)</b></h4>
+<h4><b>V4 classifiers (version v0)</b></h4>
 <br>
 <p>Fecal signatures were characterized in <b>6 sources</b> including: human (sewage), dog, cattle, pig, ruminant (created from cow and deer samples) and herbivore (created from cow, deer and horse samples).</p>
 <p>Attributes of the classifiers are summarized in the table below. Sequences included in the classifiers are listed <a href="{{ url_for('static', filename='data/Classifiers_details_v4_v0.txt') }}">here</a>, and the individual predictions are detailed <a href="{{ url_for('static', filename='data/IndividualPredictions_v4_v0.xlsx') }}">here</a>. </p>
@@ -296,6 +320,7 @@
     <th>ruminant</th>
     <th>herbivore</th>
 <tr>
+<tbody>
     <td>#ASVs in the classifier</td>
     <th>86</th>
     <th>34</th>
@@ -303,70 +328,81 @@
     <th>75</th>
     <th>59</th>
     <th>39</th>
+</tbody>
+<tr>
+<tbody>
+    <td>Decision cut-off</td>
+    <td>19</td>
+    <td>22</td>
+    <td>9</td>
+    <td>13</td>
+    <td>5</td>
+    <td>33</td>
+</tbody>
 <tr>
 </thead>
 <tbody>
 <tr>
     <td>TP</td>
-    <th>56</th>
-    <th>5</th>
-    <th>27</th>
-    <th>26</th>
-    <th>26</th>
-    <th>55</th>
+    <td>56</td>
+    <td>9</td>
+    <td>33</td>
+    <td>26</td>
+    <td>44</td>
+    <td>56</td>
 </tr>
 <tr>
     <td>FN</td>
-    <th>0</th>
-    <th>4</th>
-    <th>6</th>
-    <th>0</th>
-    <th>18</th>
-    <th>4</th>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>3</td>
 </tr>
 <tr>
     <td>TN</td>
-    <th>138</th>
-    <th>175</th>
-    <th>161</th>
-    <th>167</th>
-    <th>145</th>
-    <th>119</th>
+    <td>138</td>
+    <td>161</td>
+    <td>161</td>
+    <td>167</td>
+    <td>140</td>
+    <td>119</td>
 </tr>
 <tr>
     <td>FP</td>
-    <th>0</th>
-    <th>10</th>
-    <th>0</th>
-    <th>1</th>
-    <th>5</th>
-    <th>16</th>
+    <td>0</td>
+    <td>24</td>
+    <td>0</td>
+    <td>1</td>
+    <td>10</td>
+    <td>16</td>
 </tr>
 </tbody>
     <td>Specificity</td>
-    <th>100</th>
-    <th>95</th>
-    <th>100</th>
-    <th>99</th>
-    <th>97</th>
-    <th>88</th>
+    <td>100</td>
+    <td>87</td>
+    <td>100</td>
+    <td>99</td>
+    <td>93</td>
+    <td>88</td>
 <tr>
     <td>Sensitivity</td>
-    <th>100</th>
-    <th>56</th>
-    <th>82</th>
-    <th>100</th>
-    <th>59</th>
-    <th>93</th>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <td>95</td>
 </tr>
 </tbody>
     <tr>
     <td>Classifier type</td>
     <th>Global</th>
-    <th>Draft</th>
-    <th>Global</th>
     <th>Global</th>
     <th>Draft</th>
+    <th>Global</th>
+    <th>Discarded</th>
     <th>Global</th>
 </tr>
 </tbody>
@@ -412,6 +448,7 @@
     <th>ruminant</th>
     <th>herbivore</th>
 <tr>
+<tbody>
     <td>#ASVs in the classifier</td>
     <th>141</th>
     <th>35</th>
@@ -419,70 +456,81 @@
     <th>66</th>
     <th>70</th>
     <th>49</th>
+</tbody>
+<tr>
+<tbody>
+    <td>Decision cut-off</td>
+    <td>17</td>
+    <td>10</td>
+    <td>16</td>
+    <td>29</td>
+    <td>10</td>
+    <td>22</td>
+</tbody>
 <tr>
 </thead>
 <tbody>
 <tr>
     <td>TP</td>
-    <th>57</th>
-    <th>3</th>
-    <th>30</th>
-    <th>23</th>
-    <th>38</th>
-    <th>52</th>
+    <td>57</td>
+    <td>7</td>
+    <td>37</td>
+    <td>25</td>
+    <td>48</td>
+    <td>56</td>
 </tr>
 <tr>
     <td>FN</td>
-    <th>0</th>
-    <th>6</th>
-    <th>7</th>
-    <th>2</th>
-    <th>10</th>
-    <th>11</th>
+    <td>0</td>
+    <td>2</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>7</td>
 </tr>
-<tr>
+<tr>   
     <td>TN</td>
-    <th>142</th>
-    <th>183</th>
-    <th>162</th>
-    <th>172</th>
-    <th>148</th>
-    <th>135</th>
+    <td>142</td>
+    <td>142</td>
+    <td>160</td>
+    <td>172</td>
+    <td>146</td>
+    <td>134</td>
 </tr>
 <tr>
     <td>FP</td>
-    <th>0</th>
-    <th>7</th>
-    <th>0</th>
-    <th>2</th>
-    <th>3</th>
-    <th>2</th>
+    <td>0</td>
+    <td>48</td>
+    <td>2</td>
+    <td>2</td>
+    <td>5</td>
+    <td>2</td>
 </tr>
 </tbody>
     <td>Specificity</td>
-    <th>100</th>
-    <th>96</th>
-    <th>100</th>
-    <th>99</th>
-    <th>98</th>
-    <th>99</th>
+    <td>100</td>
+    <td>75</td>
+    <td>99</td>
+    <td>99</td>
+    <td>97</td>
+    <td>99</td>
 <tr>
     <td>Sensitivity</td>
-    <th>100</th>
-    <th>33</th>
-    <th>81</th>
-    <th>92</th>
-    <th>79</th>
-    <th>83</th>
+    <td>100</td>
+    <td>78</td>
+    <td>100</td>
+    <td>100</td>
+    <td>100</td>
+    <td>89</td>
 </tr>
 </tbody>
     <tr>
     <td>Classifier type</td>
     <th>Global</th>
-    <th>Excluded</th>
+    <th>Draft</th>
     <th>Global</th>
     <th>Global</th>
-    <th>Global</th>
+    <th>Draft</th>
     <th>Global</th>
 </tr>
 </tbody>
