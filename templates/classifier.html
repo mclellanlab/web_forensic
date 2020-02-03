@@ -19,7 +19,12 @@
     <div class="container">
         <center>
             <a href="/"><img width="500px" src="{{ url_for('static', filename='img/logo.png') }}"></a><br>
-            <a href="/">&lt;&lt;&nbsp;Back</a>
+                        <button onclick="goBack()">Go Back</button>
+                    <script>
+                        function goBack() {
+                          window.history.back();
+                        }
+                    </script>
             <h3>Classifier information</h3>
         </center>
         <div class="row">
