@@ -37,7 +37,7 @@
                 <p>A classifier contains the information of the fecal signature structure for a given source, i.e., the sequences and their relative abundance. The classifiers were created from 15-20 samples per source using sequences assigned to Bacteroidales or Clostridiales. More information about the classifiers can be found <a href="https://forensic.sfs.uwm.edu/classifier">here</a>.</p>
 
 
-                <h4><b>What is the difference between global and draft classifiers?</b></h4>
+                <h4><b>What is the difference between global, draft and discarded classifiers?</b></h4>
                 <p>We optimized the decision cut-off for each classifier to maximize their specificity (i.e., the proportion of negative samples correctly classified) and sensitivity (i.e., proportion of positive samples correctly classified) with a minimum percentgage of 70%. Because performances were evaluated using fecal samples and not environmental samples, having a voting decision cut-off too low can certainly increase sensitivity, but it can decrease the specificity leading to too many misclassifications. Classifiers with a cut-off ≤10% were considered a draft, while classifiers with a decision cut-off of ≤5% were discarded.</p>
 
 
@@ -46,7 +46,6 @@
 
                 <h4><b>My samples have a sequencing depth below the recommendations, can I still use FORENSIC?</b></h4>
                 <p>Yes! However, depending on how shallow was the sequencing, it is likely that the fecal signature recovered from your samples will never be classified as "fecal signal detected (contaminated)". We evaluated that a sample with a fecal signature (i.e., matching the ASVs in the classifiers) represented by at least ~100 sequences is enough to generate accurate classifications.</p>
-
 
                 <h4><b>I already processed my sequences using dada2, should I re-process everything using CUTADAPT and PEAR?</b></h4>
                 <p>Preliminary explorations showed that FORENSIC could not correctly identify the bacterial signatures in tested samples using data processed by dada2. This incompatibility might originate from the fact that dada2 may shorten sequences of a nucleotide during the denoising step. This is not an issue when studying the whole bacterial community, but since FORENSIC is looking for the exact sequence matches between the signatures and the sample to test, predictions can be significantly altered. </p>
