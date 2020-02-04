@@ -161,10 +161,10 @@
                                         <td style="text-align: center">
                                             <div class="chart-item" style="background-color: 
                                             {% if item|float() > data['cutoff_low'][data.region][classifier_animal][classifier]|float  %}
-                                                #ffffff
-                                           
+                                                red
+                                         
                                             {% else %}
-                                                #9E0142
+                                                white
                                             {% endif %}
                                             !important;"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
                                             </div>
