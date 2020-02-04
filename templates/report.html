@@ -52,7 +52,7 @@
     </style>
 </head>
             <div class="alert alert-warning" role="alert">
-              Colors {{ task_id }} and pictograms are not correctly displayed, we are actively working on it. Thanks for your understanding and sorry for the inconvenience.
+              Colors and pictograms are not correctly displayed, we are actively working on it. Thanks for your understanding and sorry for the inconvenience.
             </div>
 <body>
    <body>
@@ -334,6 +334,16 @@ $(document).ready(function() {
         drawHeatmap({{data.task_id}}, '#heatmap'); // heatmap.js
 
     });
+	<body>
+    <h1>
+      the value for number is:
+      <script type="text/javascript">
+        document.write(task_id)
+      </script>
+    </h1>
+</body>
+</html>
+
 </script>
 </body>
 </html>
