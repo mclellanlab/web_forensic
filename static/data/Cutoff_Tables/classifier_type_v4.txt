@@ -1,7 +1,7 @@
 classifiers	Clostridiales	Bacteroidales
 sewage	global	global
-dog	discarded	global
+dog	draft	global
 pig	global	global
 cattle	global	draft
-ruminant	discarded	discarded
+ruminant	draft	discarded
 herbivore	global	global
