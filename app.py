@@ -61,7 +61,7 @@ def task_status(task_id):
         return redirect('/result/' + str(task_id))
     else:
         email = open(os.path.join(task_path, "email"), 'r').read()
-        return render_template('processing.html', started_message=timeago.format(os.path.getctime(task_path), locale='en_US'), email=email)
+        return render_template('processing.html', started_message=timeago.format(os.path.getctime(task_path), locale='en_US'), email=email, task_id=task_id)
 
 
 @app.route('/result/<task_id>')
