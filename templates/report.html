@@ -160,7 +160,7 @@
                                         {% for item in data[classifier][sample_loop.index][1:] %}
                                         <td style="text-align: center">
                                             <div class="chart-item" style="background-color: 
-                                            {% if item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float %}
+                                            {% if item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float %}
                                                 #ffffff
 				
                                             {% else %}
