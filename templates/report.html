@@ -161,7 +161,7 @@
                                                 black
                                             {% elif item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float()  %}
                                                 #DBFAD4
-                                            {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float()  %}
+                                            {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float() && item|float() >= data['cutoff_low'][data.region][classifier_animal][classifier]|float() %}
                                                 #60D836
                                             {% else %}
                                                 #9E0142
