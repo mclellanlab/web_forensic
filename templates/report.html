@@ -156,15 +156,15 @@
                                         <td style="text-align: center">
                                             <div class="chart-item" style="background-color: 
                                             {% if item|float() == 0|float() %}
-                                                #ffffff
+                                                #ffffff"
 					    {% elif item|float() == 111|float() %}
-                                                black
+                                                black"
                                             {% elif item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float()  %}
-                                                #DBFAD4
+                                                #DBFAD4"
                                             {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float()  %}
                                                 #60D836
                                             {% else %}
-                                                #9E0142
+                                                #9E0142"
                                             {% endif %}
                                             !important;
                                             {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
