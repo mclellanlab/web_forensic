@@ -171,7 +171,7 @@
                                             </div>
 						{{ loop.index }}
 						{{ classifier_loop.index }}
-						{{ data[classifier][0][5] }}
+						{{ data[classifier][0][loop.index+1] }}
 
                                         </td>
                                         {% endfor %}
