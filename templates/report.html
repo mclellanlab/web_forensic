@@ -173,7 +173,8 @@
 						</div>
                                         </td>
 \                                        {% endfor %}
-                                        <td style="text-align: center">
+                                        
+					    <td style="text-align: center">
                                             {{ data[classifier + '_samples_sums'][sample] }} ({{ data[classifier + '_samples_unique_count'][sample] }})
                                             
 					    {% if data[classifier + '_samples_unique_count'][sample] == 0 %}							  
