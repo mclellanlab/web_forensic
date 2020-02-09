@@ -157,7 +157,7 @@
                                             <div class="chart-item" style="background-color: 
                                             {% if item|float() == 0|float() %}
                                                 #ffffff
-					    {% elif item|float() == 111|float() %}
+					    {% elif data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'discarded' %}
                                                 black
                                             {% elif item|float() < data['cutoff_low'][data.region][data[classifier][0][loop.index-1]][classifier]|float()  %}
                                                 #DBFAD4
@@ -171,8 +171,6 @@
 						border: 2px solid black 
 					   {% elif data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'draft' %}
 						border: 2px solid grey
-					   {% elif data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'discarded' %}
-			   			style="background-color" pink
 						!important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
 						</div>
                                         </td>
