@@ -158,7 +158,7 @@
                                             {% if item|float() == 0|float() %}
                                                 #ffffff
 					    {% elif data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'discarded' %}
-                                                pink
+                                                black
                                             {% elif item|float() < data['cutoff_low'][data.region][data[classifier][0][loop.index-1]][classifier]|float()  %}
                                                 #DBFAD4
                                             {% elif item|float() < data['cutoff'][data.region][data[classifier][0][loop.index-1]][classifier]|float()  %}
