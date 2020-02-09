@@ -1,5 +1,5 @@
 classifiers	Clostridiales	Bacteroidales
-sewage	discarded	global
+sewage	global	global
 dog	draft	global
 pig	global	global
 cattle	global	draft
