@@ -171,9 +171,8 @@
                                             </div>
 						{{ loop.index }}
 						{{ classifier_loop.index }}
-						{{ data[classifier][0][3] }}
+						{{ data[classifier][0][loop.index] }}
 
-						{{ classifier_animal }}
                                         </td>
                                         {% endfor %}
                                         <td style="text-align: center">
