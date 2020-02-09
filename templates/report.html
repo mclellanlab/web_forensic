@@ -169,8 +169,11 @@
                                             !important;
                                             {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
                                             </div>
-						{{ data[classifier][0][loop.index-1] }}
-						{{ classifier_animal }}
+						{{ classifier }}
+						{{ loop.index }}
+						{{ classifier_loop }}
+						{{ loop.index }}
+						{{ classifiers }}
 						
 						
 						{{ data['cutoff_low'][data.region][data[classifier][0][loop.index-1]]['Clostridiales'] }}
