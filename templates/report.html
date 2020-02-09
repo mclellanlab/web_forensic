@@ -167,7 +167,13 @@
                                                 #9E0142
                                             {% endif %}
                                             !important;
-                                            {% if data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
+                                            {% if data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'global' %}
+						border: 2px solid black 
+					   {% elif data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'draft' %}
+						border: 2px solid grey
+					   {% elif data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'discarded' %}
+			   			border: 2px solid red 
+						!important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
 						</div>
                                         </td>
                                         {% endfor %}
