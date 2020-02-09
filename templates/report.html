@@ -153,7 +153,7 @@
                                         {% for item in data[classifier][sample_loop.index][1:] %}
                                         <td style="text-align: center">
                                             <div class="chart-item" style="background-color: 
-                                            {% if data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'discarded' %}
+                                            {% if data['classifier_type'][data.region][classifier_animal_cutoff][classifier] == 'discarded' %}
                                                 black    
 					    {% elif item|float() == 0|float() %}
                                                 #ffffff
@@ -165,9 +165,9 @@
                                                 #9E0142
                                             {% endif %}
                                             !important;
-                                            {% if data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'global' %}
+                                            {% if data['classifier_type'][data.region][classifier_animal_cutoff][classifier] == 'global' %}
 						border: 2px solid black 
-					   {% elif data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'draft' %}
+					   {% elif data['classifier_type'][data.region][classifier_animal_cutoff][classifier] == 'draft' %}
 						border: 2px solid #F0F0F0
 						!important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
 						</div>
