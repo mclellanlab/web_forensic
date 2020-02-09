@@ -149,17 +149,17 @@
                                         <td style="text-align: center">
                                             {{ classifier }}
                                         </td>
-                                        {% set classifier_animal = data[classifier][0][loop.index-1] %}
+                                        {% set clazifier_animal = data[classifier][0][loop.index-1] %}
                                         {% for item in data[classifier][sample_loop.index][1:] %}
                                         <td style="text-align: center">
                                             <div class="chart-item" style="background-color: 
-                                            {% if data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'discarded' %}
+                                            {% if data['classifier_type'][data.region][clazifier_animal][classifier] == 'discarded' %}
                                                 black    
 					    {% elif item|float() == 0|float() %}
                                                 #ffffff
-                                            {% elif item|float() < data['cutoff_low'][data.region][data[classifier][0][loop.index-1]][classifier]|float()  %}
+                                            {% elif item|float() < data['cutoff_low'][data.region][clazifier_animal][classifier]|float()  %}
                                                 #DBFAD4
-                                            {% elif item|float() < data['cutoff'][data.region][data[classifier][0][loop.index-1]][classifier]|float()  %}
+                                            {% elif item|float() < data['cutoff'][data.region][clazifier_animal][classifier]|float()  %}
                                                 #60D836
                                             {% else %}
                                                 #9E0142
