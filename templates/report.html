@@ -168,7 +168,7 @@
                                             {% if data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'global' %}
 						border: 2px solid black 
 					   {% elif data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'draft' %}
-						border: 2px solid grey
+						border: 2px solid #F0F0F0
 						!important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
 						</div>
                                         </td>
@@ -231,7 +231,7 @@
                                         </tr>
                                         <tr>
                                             <td><div class="chart-item" style="border: 2px solid black !important"; border: 2px solid black !important;"></div></td>
-                                            <td><div class="chart-item" style="border: 2px solid grey !important;"></div></td>
+                                            <td><div class="chart-item" style="border: 2px solid #F0F0F0 !important;"></div></td>
                                             <td><div class="chart-item" style="background-color: black !important;"></div></td>
                                             <td></td>
                                             <td></td>
