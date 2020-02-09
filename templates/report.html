@@ -169,9 +169,9 @@
                                             !important;
                                             {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
                                             </div>
-						{{ [loop.index] }}
-						{{ [sample_loop.index] }}
-						{{ classifier_loop.index] }}
+						{{ loop.index }}
+						{{ sample_loop.index }}
+						{{ classifier_loop.index }}
 						
 						{{ [sample_loop.index] }}
                                             {{ data['cutoff_low'][data.region][classifier_animal][classifier]|float() }}
