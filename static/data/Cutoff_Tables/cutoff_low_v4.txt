@@ -1,7 +1,7 @@
 classifiers	Clostridiales	Bacteroidales
 dog	9.999	15
+pig	2	666
 cattle	1	1
 ruminant	2	1
 herbivore	6	20
-pig	2	666
 sewage	2	4
