@@ -64,9 +64,6 @@ for (y in 1:length(bacterial_groups)) {
         prediction.p.100<-prediction.p[, as.character(Animal)]*100
         prediction.p.100[which(apply(data.user, 1, sum)==0)]<-0
         pred.withzero.prob[, c(x)]<-prediction.p.100
-        if(region=='v6' && BacterialGroup=='bacteroidales' && Animal=='dog'){pred.withzero.prob[, c(x)]<-111}
-        if(region=='v6' && BacterialGroup=='bacteroidales' && Animal=='deer'){pred.withzero.prob[, c(x)]<-111}
-        if(region=='v4' && BacterialGroup=='bacteroidales' && Animal=='ruminant'){pred.withzero.prob[, c(x)]<-111}
         pred.names[x]<-as.character(Animal)
         #prediction response
         pred.withzero.prob.dataframe<-as.data.frame(pred.withzero.prob[, c(x)])
