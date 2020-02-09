@@ -172,6 +172,7 @@
 						!important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
 						</div>
                                         </td>
+					    {{ classifier_animal_cutoff }}
                                         {% endfor %}
                                         <td style="text-align: center">
                                             {{ data[classifier + '_samples_sums'][sample] }} ({{ data[classifier + '_samples_unique_count'][sample] }})
