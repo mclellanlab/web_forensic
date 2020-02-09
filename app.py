@@ -92,8 +92,8 @@ def show_task_result(task_id):
                 data[table_name][region] = {}
                 with open(os.path.join('static/data/Cutoff_Tables', table_name + "_" + region + ".txt"), "r") as table:
                     for line in table.readlines()[1:]:
-                        clasifier_, Clos_, Bacte_ = line.strip().split()
-                        data[table_name][region][clasifier_] = {
+                        classifier_, Clos_, Bacte_ = line.strip().split()
+                        data[table_name][region][classifier_] = {
                             'Clostridiales': Clos_,
                             'Bacteroidales': Bacte_
                         }
