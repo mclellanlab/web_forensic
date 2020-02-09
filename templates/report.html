@@ -53,14 +53,6 @@
 </head>
             <div class="alert alert-warning" role="alert">
               Colors and pictograms are not correctly displayed, we are actively working on it. Thanks for your understanding and sorry for the inconvenience.
-        <br>
-		    {{ data.Clostridiales }}
-		            <br>
-
-		    {{ data.cutoff_low }}
-        <br>
-
-		    {{ data.cutoff }}
 	</div>
 <body>
    <body>
@@ -177,7 +169,7 @@
                                             !important;
                                             {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
                                             </div>
-                                            
+                                            {{ data['cutoff_low'][data.region][classifier_animal][classifier]|float() }}
                                         </td>
                                         {% endfor %}
                                         <td style="text-align: center">
