@@ -159,26 +159,16 @@
                                                 #ffffff
 					    {% elif item|float() == 111|float() %}
                                                 black
-                                            {% elif item|float() < data['cutoff_low'][data.region][classifier_animal][classifier]|float()  %}
+                                            {% elif item|float() < data['cutoff_low'][data.region][data[classifier][0][loop.index-1]][classifier]|float()  %}
                                                 #DBFAD4
-                                            {% elif item|float() < data['cutoff'][data.region][classifier_animal][classifier]|float()  %}
+                                            {% elif item|float() < data['cutoff'][data.region][data[classifier][0][loop.index-1]][classifier]|float()  %}
                                                 #60D836
                                             {% else %}
                                                 #9E0142
                                             {% endif %}
                                             !important;
-                                            {% if data['classifier_type'][data.region][classifier_animal][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
-                                            </div>
-
-												
-						{{ data['cutoff_low'][data.region][data[classifier][0][loop.index-1]][classifier] }}
-						
-						{{ data['cutoff'][data.region][data[classifier][0][loop.index-1]][classifier] }}
-
-						{{ data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] }}
-
-
-
+                                            {% if data['classifier_type'][data.region][data[classifier][0][loop.index-1]][classifier] == 'global' %}border: 1px solid black !important;{% endif %}"  data-toggle="tooltip" data-placement="top" title="{{ item }}">
+						</div>
                                         </td>
                                         {% endfor %}
                                         <td style="text-align: center">
