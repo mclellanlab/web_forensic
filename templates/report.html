@@ -48,6 +48,26 @@
         .borderless td, .borderless th {
             border-top: none !important;
         }
+	   
+	    
+	    
+	    
+	    
+	    
+	    
+	.table-fixed thead {
+	  width: 97%;
+	  float: left;
+	}
+
+	.table-fixed tbody {
+	  height: 230px;
+	  overflow-y: auto;
+	  width: 100%;
+	}
+	 .table-fixed tbody {
+	  display: block;
+	}
 	    
 	  
     </style>
@@ -113,7 +133,7 @@
                         <div class="panel panel-default">
                           <div class="panel-heading">Fecal Source Predictions</div>
                           <div class="panel-body">
-                              <table class="table">
+                              <table class="table table-fixed">
                                 {% set classifiers = ['Clostridiales', 'Bacteroidales'] %}
                                 <tr>
                                     <td style="text-align: center">
