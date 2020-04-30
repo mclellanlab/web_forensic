@@ -229,9 +229,9 @@
 					<tr>
                                             <td rowspan="2">Fecal signature detection confidence index</td>
                                             <td>not detected</td>
-                                            <td>low confidence (&lt;80% specificity)</td>
-                                            <td>low confidence (&ge;80% specificity)</td>
-                                            <td>high confidence </td>
+                                            <td>trace detected</td>
+                                            <td>low confidence</td>
+                                            <td>high confidence</td>
                                             <td></td>
                                         </tr>
                                         <tr>
@@ -267,8 +267,8 @@
                                     <div class="panel-body">
 					    <p>How is this value obtained? Submitted bacterial profiles are mapped along with decision trees previously built by random forest to train the classifiers. Each tree gives a classification (roughly: yes/no the mapped data is/is not close to the model). Combing all voting tree classifications provides the voting tree probability. Thus, the voting tree probability translates the degree of similarity between the signatures and the unknown samples. The more similar the bacterial signature of each sample is to the set classifier fecal signatures, the higher the probability is in the source prediction output.</p>
 					    <br>
-					    <p>What is the difference between "low confidence" and "high confidence" regarding the fecal signature detection confidence index? We optimized for each classifier the voting tree cut-off (decision cut-off) at which a sample is considered as contaminated (or not). This cut-off was defined to maximize the sensitivity and the specificity of the classifiers. Above the decision cut-off, a sample is classified as "high confidence", i.e., the fecal signature has been detected in the submitted sample. Below the decision cut-off, a sample is classified as "low confidence", i.e., a fraction of the fecal signature was recovered in the submitted sample, but not enough to be classified as contaminated. </p>
-					    <p>"&ge;80% specificity" indicates that at the voting tree probability observed in the submitted sample, the classifier had a specificity of at least 80% (evaluated using raw fecal samples). </p>
+					    <p>What is the difference between "trace detected", "low confidence", and "high confidence" regarding the fecal signature detection confidence index? We optimized for each classifier the voting tree cut-off (decision cut-off) at which a sample is considered as contaminated (or not). This cut-off was defined to maximize the sensitivity and the specificity of the classifiers. Above the decision cut-off, a sample is classified as "high confidence", i.e., the fecal signature has been detected in the submitted sample. Below the decision cut-off, a sample is classified as "low confidence" or "trace detected", i.e., a fraction of the fecal signature was recovered in the submitted sample, but not enough to be classified as contaminated. </p>
+					    <p>"low confidence" in opposition to "trace detected" indicates that at the voting tree probability observed in the submitted sample, the classifier had a specificity evaluated using raw fecal samples of at least 80%. </p>
 					    <br>
 					    <p>Please consult our <a href="/faq" >FAQ</a> to have more details about the global, draft (and excluded) classifiers.</p>
                                     </div>
