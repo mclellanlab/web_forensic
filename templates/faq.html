@@ -77,14 +77,16 @@
                 <h4><b>I already processed my sequences using dada2, should I re-process everything using CUTADAPT and PEAR?</b></h4>
                 <p>Preliminary explorations showed that FORENSIC could not correctly identify the bacterial signatures in tested samples using data processed by dada2. This incompatibility might originate from the fact that dada2 may shorten sequences of a nucleotide during the denoising step. This is not an issue when studying the whole bacterial community, but since FORENSIC is looking for the exact sequence matches between the signatures and the sample to test, predictions can be significantly altered. </p>
 
-                <h4><b>I already sequenced my samples, but using the original Earth Microbiome Project (EMP) V4 primer set, can I use FORENSIC?</b></h4>
-                <p>Yes, the modification of the EMP-V4 primer does not affect the recovery of the Bacteroidales and Clostridiales sequences. <a href="https://forensic.sfs.uwm.edu/result/EMPprimers">FORENSIC generated similar predictions</a> either the dataset was trimmed using the original EMP (EMPo) or the modified (EMPm) primer sets. The dataset was composed of samples sequenced using V4V5 or EMP-V4 modified primer sets. </p>
+                <h4><b>How do I know my sequences are properly trimmed?</b></h4>
+                <p>V4 and V6 classifiers are composed of sequences ranging from 250 to 254 nt, and from 54 to 66 nt, respectively. Because FORENSIC searchs for strictly identical sequences, shorter or longer sequences will cause FORENSIC to fail. If your sequences are too long, look for primers and trim your fasta using CUTADAPT. </p>
 
-                
                 <h4><b>Can I use data generated using another sequencing platform than Illumina?</b></h4>
                 <p>We only validated the predictions using Illumina sequence data. We would be pleased to test FORENSIC using other technologies, such as minION.</p>
                
-
+               
+                <h4><b>Can I use data generated using another sequencing platform than Illumina?</b></h4>
+                <p>We only validated the predictions using Illumina sequence data. We would be pleased to test FORENSIC using other technologies, such as minION.</p>
+               
                 <h4><b>FORENSIC tests automatically for multiples sources, is it possible to test samples for a specific classifier?</b></h4>
                 <p>The classifiers and the associated predictions are independent. The prediction of one classifier does not influence the predictions of the other classifiers. In other words, identifying the sewage signature in a sample does not weaken the probability of detecting the cow signature in that same sample.</p>
 
