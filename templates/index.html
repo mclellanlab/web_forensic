@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="alert alert-info" style="padding: 5px; font-size: 13px;">
-                                        <strong>Info!</strong> Headers have to contain the sample ID and the sequence ID separated by a vertical bar: <code>>SampleID|SequenceID</code>, and the first caracter of the sample ID must be a non-numeric character: <code>>sample08|seq1</code> not <code>>08sample|seq1</code>. See below for more info. A fasta with a bad header formatting will crash the server. 
+                                        <strong>Info!</strong> Headers have to contain the sample ID and the sequence ID separated by a vertical bar: <code>>SampleID|SequenceID</code>, and the first caracter of the sample ID must be a non-numeric character: <code>>sample08|seq1</code> not <code>>08sample|seq1</code>. See below for more info. A fasta with a bad header formatting will cause the server to crash. 
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label" for="email">E-mail</label>
@@ -103,7 +103,7 @@
                          <p style="padding-left: 25px;">Reads must be trimmed using <a href="https://cutadapt.readthedocs.io/en/stable/guide.html">CUTADAPT</a> and merged using <a href="https://sco.h-its.org/exelixis/web/software/pear/">PEAR</a> according to the V4 or V6 workflow (<a href="{{ url_for('static', filename='data/TrimMerge_v1.3.sh') }}">bash </a> or <a href="{{ url_for('static', filename='data/TrimMerge_v1.3.txt') }}">text</a> version). Warning: some parameters have to be set manually before being used as an automated script. This workflow will generate one fasta file containing your different samples.</p>
                          <span class="li-dot"> 3 </span>
                          <p style="padding-left: 25px;">FORENSIC supports only fasta files (not compressed). To date, there is no fasta file size limit, but please consider uploading fasta <5GB. A header line is REQUIRED and consists of the sampleID and the sequence ID separated by a vertical bar "|"
-                            (if you followed the workflow above, you are good to go):<code>>sampleID|sequenceID</code>. A fasta with a wrong header format will crash the server.<br>
+                            (if you followed the workflow above, you are good to go):<code>>sampleID|sequenceID</code>. A fasta with a wrong header format will cause the server to crash.<br>
                             Good examples: <code>>BeachSample1|D4ZHLFP1-44-D15PUACXX-2-1101-1236-2324</code> or <code>>PTRR.145_4|1 O8YZI:01315:00349 orig_bc=GAGTAGAC</code><br>
                             Bad examples: <code>>BeachSample1_D4ZHLFP1-44-D15PUACXX-2-1101-1236-2324</code> or <code>>PTRR.145_4 1 O8YZI:01315:00349 orig_bc=GAGTAGAC</code><br> 
                             SampleID has to start with a non-numeric character. 
