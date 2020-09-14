@@ -139,7 +139,7 @@ fi
 
 	# Preparation
 #for file in *.gz; do gzip -d ${file}; printf "Unzipped ${file}\n"; done
-for i in *.fastq; do mv "$i" "${i/$removeCharacter/}"; done
+for i in *.fastq*; do mv "$i" "${i/$removeCharacter/}"; done
 
 
 qualitytrimming=0								# Quality score threshold for trimming the low quality part of a read. If the quality scores of two consecutive bases are strictly less than the specified threshold, the rest of the read will be trimmed. (default: 0)
