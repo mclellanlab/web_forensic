@@ -114,7 +114,7 @@ then
 
        
 	# Export trimmed fastq in a temporary folder in order to be processed
-	for file in *; do cp ${file} ../PEAR/temp/; printf "Copied ${file}\n"; done
+	for file in ../Cutadapt/*; do cp ${file} ../PEAR/temp/; printf "Copied ${file}\n"; done
 	cd ../PEAR/temp/
 
 
